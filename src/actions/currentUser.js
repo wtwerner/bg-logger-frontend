@@ -9,8 +9,7 @@ export const setCurrentUser = user => {
 
 // Asynchronous Action Creators
 
-export const login = credentials => {
-    console.log("creds are", credentials);
+export const login = (credentials) => {
     return dispatch => {
         return fetch("http://localhost:3001/api/v1/login", {
             method: "POST",
@@ -20,13 +19,13 @@ export const login = credentials => {
             body: JSON.stringify(credentials)
         })
         .then(response => response.json())
-        .then(user => {
-            if (user.error) {
-                alert(user.error)
-            } else {
-                dispatch(setCurrentUser(user))
-            }
+        .then(response => {
+          if (response.error) {
+            alert(response.error)
+          } else {
+            dispatch(setCurrentUser(response.data))
+          }
         })
-        .catch(error => console.log(error))
+        .catch(console.log)
     }
 }
