@@ -7,35 +7,26 @@ export const setCurrentUser = user => {
     }
 }
 
-// export const startingAuth = () => {
-//     return {
-//         type: 'STARTING_AUTH'
-//     }
-// }
-
-
-
 // Asynchronous Action Creators
 
 export const login = credentials => {
     console.log("creds are", credentials);
-    return async dispatch => {
-        try {
-            const response = await fetch("http://localhost:3001/api/v1/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(credentials)
-            });
-            const user = await response.json();
+    return dispatch => {
+        return fetch("http://localhost:3001/api/v1/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(credentials)
+        })
+        .then(response => response.json())
+        .then(user => {
             if (user.error) {
                 alert(user.error)
             } else {
                 dispatch(setCurrentUser(user))
-            } 
-        } catch (error) {
-            console.log(error)
-        }
+            }
+        })
+        .catch(error => console.log(error))
     }
 }
