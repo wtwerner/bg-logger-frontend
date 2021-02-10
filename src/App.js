@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react'
 import Login from './components/Login'
+import Logout from './components/Logout'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/currentUser'
 import Jumbotron from 'react-bootstrap/Jumbotron';
@@ -11,12 +12,13 @@ class App extends React.Component {
   componentDidMount() {
     this.props.getCurrentUser()
   }
+
   render() {
     return (
       <div>
         <Container>
-          <Login />
-          <Jumbotron>
+          {this.props.currentUser ? <Logout /> : <Login />}
+          {/* <Jumbotron>
             <h1>Hello, world!</h1>
             <p>
               This is a simple hero unit, a simple jumbotron-style component for calling
@@ -25,11 +27,17 @@ class App extends React.Component {
             <p>
               <Button variant="primary">Learn more</Button>
             </p>
-          </Jumbotron>
+          </Jumbotron> */}
         </Container>
       </div>
     );
   }
 }
 
-export default connect(null, { getCurrentUser })(App);
+const mapStateToProps = ({ currentUser }) => {
+  return {
+    currentUser
+  }
+}
+
+export default connect(mapStateToProps, { getCurrentUser })(App);
