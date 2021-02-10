@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react'
-import Login from './components/Login'
-import Logout from './components/Logout'
+import Login from './components/auth/Login'
+import Logout from './components/auth/Logout'
 import Main from './components/Main'
 import GlobalNavbar from './components/Navbar'
 import { connect } from 'react-redux'

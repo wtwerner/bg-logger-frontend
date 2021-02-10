@@ -2,6 +2,10 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import { logout } from "../actions/currentUser.js"
+import { connect } from 'react-redux'
 
 const GlobalNavbar = ({ logout }) => {
     return (
@@ -18,8 +22,11 @@ const GlobalNavbar = ({ logout }) => {
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
+            <Form inline>
+                <Button variant="outline-success" onClick={ logout }>Logout</Button>
+            </Form>
         </Navbar>
     )
 }
 
-export default GlobalNavbar
+export default connect(null, { logout } )(GlobalNavbar)
