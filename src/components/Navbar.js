@@ -7,10 +7,18 @@ import Button from 'react-bootstrap/Button'
 import { logout } from "../actions/currentUser.js"
 import { connect } from 'react-redux'
 
-const GlobalNavbar = ({ logout }) => {
+const GlobalNavbar = ({ logout, currentUser }) => {
+    const authButton = () => {
+        if (currentUser === null) {
+            return <Button variant="outline-success" onClick={ logout }>Login</Button>
+        } else {
+            return <Button variant="outline-success" onClick={ logout }>Logout</Button>
+        }
+    }
+
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand href="/">BG Logger</Navbar.Brand>
+        <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+            <Navbar.Brand href="/" className="mx-3">BG Logger</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
@@ -22,11 +30,15 @@ const GlobalNavbar = ({ logout }) => {
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
-            <Form inline>
-                <Button variant="outline-success" onClick={ logout }>Logout</Button>
+            <Form inline className="mx-3">
+                {authButton()}
             </Form>
         </Navbar>
     )
 }
 
-export default connect(null, { logout } )(GlobalNavbar)
+function mapStateToProps(state) {
+    return { currentUser: state.currentUser }
+  }
+
+export default connect(mapStateToProps, { logout } )(GlobalNavbar)
