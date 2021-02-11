@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 const GlobalNavbar = ({ logout, currentUser }) => {
     const authButton = () => {
         if (currentUser === null) {
-            return <Button variant="outline-success" onClick={ logout }>Login</Button>
+            return <Button variant="outline-success" href="/login">Login</Button>
         } else {
             return <Button variant="outline-success" onClick={ logout }>Logout</Button>
         }
