@@ -9,12 +9,14 @@ import LoginContainer from './components/auth/LoginContainer'
 import GlobalNavbar from './components/Navbar'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/currentUser'
+import { fetchGamesFromQuery } from './actions/apiGames'
 import Container from 'react-bootstrap/Container'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends React.Component {
   componentDidMount() {
     this.props.getCurrentUser()
+    this.props.fetchGamesFromQuery("catan")
   }
 
   render() {
@@ -36,10 +38,11 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ currentUser }) => {
+const mapStateToProps = ({ currentUser, apiGames }) => {
   return {
-    currentUser
+    currentUser,
+    apiGames
   }
 }
 
-export default connect(mapStateToProps, { getCurrentUser })(App);
+export default connect(mapStateToProps, { getCurrentUser, fetchGamesFromQuery })(App);
