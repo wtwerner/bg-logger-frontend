@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { updateDiscoverForm } from "../../actions/discoverForm.js"
 import { fetchGamesFromQuery } from "../../actions/apiGames.js"
+import { Form, Button, InputGroup } from 'react-bootstrap'
 
 const DiscoverForm = ({ discoverFormData, updateDiscoverForm, fetchGamesFromQuery }) => {
     
@@ -18,10 +19,12 @@ const DiscoverForm = ({ discoverFormData, updateDiscoverForm, fetchGamesFromQuer
     }
 
     return (
-        <form onSubmit={handleOnSubmit}>
-            <input value={discoverFormData.query} name="query" type="text" onChange={handleOnChange} />
-            <input value="Search" type="submit" />
-        </form>
+        <Form inline onSubmit={handleOnSubmit}>
+            <InputGroup>
+                <Form.Control value={discoverFormData.query} placeholder="Discover Games" name="query" type="text" onChange={handleOnChange} />
+                <Button variant="primary" type="submit">Search</Button>
+            </InputGroup>
+        </Form>
     )
 }
 
