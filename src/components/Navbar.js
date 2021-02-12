@@ -1,9 +1,5 @@
 import React from 'react'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import { Navbar, Nav, NavDropdown, Form, Button } from 'react-bootstrap'
 import { logout } from "../actions/currentUser.js"
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
