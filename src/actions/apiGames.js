@@ -11,7 +11,7 @@ export const searchApiGames = games => {
 
 export const fetchGamesFromQuery = (query) => {
     return dispatch => {
-        return fetch(API_URL+'search/?query='+query)
+        return fetch(API_URL+'search/?subtype=boardgame&query='+query)
             .then(res => res.text())
             .then(data => {
                 let xml = new XMLParser().parseFromString(data); 
