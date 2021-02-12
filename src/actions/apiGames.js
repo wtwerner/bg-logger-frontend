@@ -1,6 +1,5 @@
-import XMLParser from 'react-xml-parser';
-
-const API_URL = 'https://www.boardgamegeek.com/xmlapi2/'
+const API_URL = 'https://api.boardgameatlas.com/api/'
+const CLIENT_ID = '&client_id=0hcbB6EyEf'
 
 export const searchApiGames = games => {
     return {
@@ -11,11 +10,11 @@ export const searchApiGames = games => {
 
 export const fetchGamesFromQuery = (query) => {
     return dispatch => {
-        return fetch(API_URL+'search/?subtype=boardgame&query='+query)
-            .then(res => res.text())
+        return fetch(API_URL+'search?name='+query+CLIENT_ID)
+            .then(response => response.json())
             .then(data => {
-                let xml = new XMLParser().parseFromString(data); 
-                dispatch(searchApiGames(xml))
+                dispatch(searchApiGames(data))
+                // console.log(data)
             })
         .catch(err => console.log(err));
     }
