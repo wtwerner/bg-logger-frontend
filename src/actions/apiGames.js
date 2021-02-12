@@ -10,7 +10,7 @@ export const searchApiGames = games => {
 
 export const fetchGamesFromQuery = (query) => {
     return dispatch => {
-        return fetch(API_URL+'search?name='+query+CLIENT_ID)
+        return fetch(API_URL+'search?name='+query+CLIENT_ID+'&fuzzy_match=true')
             .then(response => response.json())
             .then(data => {
                 dispatch(searchApiGames(data))
