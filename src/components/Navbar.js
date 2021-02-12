@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { logout } from "../actions/currentUser.js"
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const GlobalNavbar = ({ logout, currentUser }) => {
     const authButton = () => {
@@ -18,15 +19,15 @@ const GlobalNavbar = ({ logout, currentUser }) => {
 
     return (
         <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
-            <Navbar.Brand href="/" className="mx-3">BG Logger</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/" className="mx-3">BG Logger</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link href="/discover">Discover</Nav.Link>
-                    <Nav.Link href="/sessions">Sessions</Nav.Link>
+                    <Nav.Link as={Link} to="/discover">Discover</Nav.Link>
+                    <Nav.Link as={Link} to="/sessions">Sessions</Nav.Link>
                     <NavDropdown title="Collection" id="collasible-nav-dropdown">
-                        <NavDropdown.Item href="/owned">Owned</NavDropdown.Item>
-                        <NavDropdown.Item href="/wishlist">Wishlist</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/owned">Owned</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/wishlist">Wishlist</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>

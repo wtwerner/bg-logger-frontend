@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/currentUser'
 import { fetchGamesFromQuery } from './actions/apiGames'
 import Container from 'react-bootstrap/Container'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom'
 
 class App extends React.Component {
   componentDidMount() {
@@ -24,14 +24,14 @@ class App extends React.Component {
       <div>
         <GlobalNavbar />
         <Container>
-          <Router>
+          {/* <Router> */}
             <Route path="/" exact component={Main} />
             <Route path="/discover" exact component={DiscoverContainer} />
             <Route path="/owned" exact component={OwnedContainer} />
             <Route path="/wishlist" exact component={WishlistContainer} />
             <Route path="/sessions" exact component={SessionsContainer} />
             <Route path="/login" exact component={LoginContainer} />
-          </Router>
+          {/* </Router> */}
         </Container>
       </div>
     );
