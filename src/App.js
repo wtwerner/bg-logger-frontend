@@ -36,7 +36,7 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ currentUser, apiGames }) => {
+const mapStateToProps = ({ currentUser }) => {
   return {
     currentUser
   }

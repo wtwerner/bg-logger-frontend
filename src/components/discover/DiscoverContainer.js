@@ -1,13 +1,24 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
-import DiscoverForm from './discoverForm'
+import DiscoverForm from './DiscoverForm'
+import DiscoverTable from './DiscoverTable'
+import { connect } from 'react-redux'
 
-const DiscoverContainer = () => {
-    return (
-        <Container>
-            <DiscoverForm />
-        </Container>
-    )
+class DiscoverContainer extends React.Component {
+    render() {
+        return (
+            <Container>
+                <DiscoverForm />
+                <DiscoverTable games={this.props.apiGames}/>
+            </Container>
+        )
+    }
 }
 
-export default DiscoverContainer
+const mapStateToProps = ({ apiGames }) => {
+    return {
+        apiGames
+    }
+}
+
+export default connect(mapStateToProps)(DiscoverContainer)
