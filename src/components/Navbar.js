@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 const GlobalNavbar = ({ logout, currentUser }) => {
     const authButton = () => {
         if (currentUser === null) {
-            return <Button variant="outline-success" href="/login">Login</Button>
+            return <Button variant="outline-success" as={Link} to="/login">Login</Button>
         } else {
             return <Button variant="outline-success" onClick={ logout }>Logout</Button>
         }
