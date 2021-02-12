@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { updateDiscoverForm } from "../../actions/discoverForm.js"
 import { fetchGamesFromQuery } from "../../actions/apiGames.js"
 
-const DiscoverForm = ({ discoverFormData, updateDiscoverForm }) => {
+const DiscoverForm = ({ discoverFormData, updateDiscoverForm, fetchGamesFromQuery }) => {
     
     const handleOnChange = event => {
         const updatedFormInfo = {
@@ -14,7 +14,7 @@ const DiscoverForm = ({ discoverFormData, updateDiscoverForm }) => {
 
     const handleOnSubmit = event => {
         event.preventDefault()
-        fetchGamesFromQuery(discoverFormData)
+        fetchGamesFromQuery(discoverFormData.query)
     }
 
     return (
