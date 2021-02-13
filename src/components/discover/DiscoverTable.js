@@ -1,6 +1,5 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap'
-import { FaStar, FaArrowAltCircleDown } from 'react-icons/fa';
 
 class DiscoverTable extends React.Component {
     render() {
@@ -19,18 +18,22 @@ class DiscoverTable extends React.Component {
                 </thead>
                 <tbody>
                     {this.props.games.map(game => {
-                        if (game.visits > 100)
-                            return (<tr key={game.id} className="align-middle" >
-                                <td className="text-center"><img src={game.images.small} alt="game" /></td>
-                                <td className="text-center">{game.name}</td>
-                                <td className="text-center">{game.rank < 1000 ? game.rank : 'N/A'}</td>
-                                <td className="text-center">{game.min_players}-{game.max_players}</td>
-                                <td className="text-center">{'$'+(game.price > 0.01 ? game.price : 'N/A')}</td>
-                                <td className="text-center"><Button><FaStar /></Button></td>
-                                <td className="text-center"><Button><FaArrowAltCircleDown /></Button></td>
-                            </tr>)    
+                        if (game.visits > 100) {
+                            return (
+                                <tr key={game.id} className="align-middle" >
+                                    <td className="text-center"><img src={game.images.small} alt="game" /></td>
+                                    <td className="text-center">{game.name}</td>
+                                    <td className="text-center">{game.rank < 1000 ? game.rank : 'N/A'}</td>
+                                    <td className="text-center">{game.min_players}-{game.max_players}</td>
+                                    <td className="text-center">{'$'+(game.price > 0.01 ? game.price : 'N/A')}</td>
+                                    <td className="text-center"><Button>Wishlist</Button></td>
+                                    <td className="text-center"><Button>Collection</Button></td>
+                                </tr>
+                            )    
+                        } else {
+                            return null
                         }
-                    )}
+                    })}
                 </tbody>
             </Table>
         )
