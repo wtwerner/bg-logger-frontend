@@ -7,7 +7,8 @@ import { connect } from 'react-redux'
 class DiscoverContainer extends React.Component {
     render() {
         return (
-            <Container>
+            <Container className="d-grid gap-3">
+                <div/>
                 <DiscoverForm />
                 <DiscoverTable games={this.props.apiGames}/>
             </Container>
