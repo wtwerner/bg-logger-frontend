@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom'
 const GlobalNavbar = ({ logout, currentUser }) => {
     const authButton = () => {
         if (currentUser === null) {
-            return <Button variant="outline-success" as={Link} to="/login">Login</Button>
+            return <Button variant="secondary" as={Link} to="/login">Login</Button>
         } else {
-            return <Button variant="outline-success" onClick={ logout }>Logout</Button>
+            return <Button variant="secondary" onClick={ logout }>Logout</Button>
         }
     }
 
     return (
-        <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="sm" bg="light" variant="light" >
             <Navbar.Brand as={Link} to="/" className="mx-3">BG Logger</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
