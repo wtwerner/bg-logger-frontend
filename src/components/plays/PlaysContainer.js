@@ -1,12 +1,12 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
 
-const SessionsContainer = () => {
+const PlaysContainer = () => {
     return (
         <Container>
-            <h1>SESSIONS</h1>
+            <h1>PLAYS</h1>
         </Container>
     )
 }
 
-export default SessionsContainer
+export default PlaysContainer

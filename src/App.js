@@ -4,7 +4,7 @@ import Main from './components/Main'
 import DiscoverContainer from './components/discover/DiscoverContainer'
 import OwnedContainer from './components/owned/OwnedContainer'
 import WishlistContainer from './components/wishlist/WishlistContainer'
-import SessionsContainer from './components/sessions/SessionsContainer'
+import PlaysContainer from './components/plays/PlaysContainer'
 import LoginContainer from './components/auth/LoginContainer'
 import GlobalNavbar from './components/Navbar'
 import { connect } from 'react-redux'
@@ -26,7 +26,7 @@ class App extends React.Component {
             <Route path="/discover" exact component={DiscoverContainer} />
             <Route path="/owned" exact component={OwnedContainer} />
             <Route path="/wishlist" exact component={WishlistContainer} />
-            <Route path="/sessions" exact component={SessionsContainer} />
+            <Route path="/plays" exact component={PlaysContainer} />
             <Route path="/login" exact component={LoginContainer} />
         </Container>
       </div>

@@ -11,8 +11,8 @@ class OwnedTable extends React.Component {
                         <th>Title</th>
                         <th>Rank</th>
                         <th>Players</th>
-                        <th>Add a Session</th>
-                        <th>View Sessions</th>
+                        <th>Add a Play</th>
+                        <th>View Plays</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,8 +23,8 @@ class OwnedTable extends React.Component {
                                     <td className="text-center">{game.name}</td>
                                     <td className="text-center">{game.rank}</td>
                                     <td className="text-center">{game.min_players}-{game.max_players}</td>
-                                    <td className="text-center"><Button>Add Session</Button></td>
-                                    <td className="text-center"><Button>View Sessions</Button></td>
+                                    <td className="text-center"><Button>Add a Play</Button></td>
+                                    <td className="text-center"><Button>View Plays</Button></td>
                                 </tr>
                             )}
                     )}

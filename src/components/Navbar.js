@@ -20,7 +20,7 @@ const GlobalNavbar = ({ logout, currentUser }) => {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
                     <Nav.Link as={Link} to="/discover">Discover</Nav.Link>
-                    <Nav.Link as={Link} to="/sessions">Sessions</Nav.Link>
+                    <Nav.Link as={Link} to="/plays">Plays</Nav.Link>
                     <NavDropdown title="Collection" id="collasible-nav-dropdown">
                         <NavDropdown.Item as={Link} to="/owned">Owned</NavDropdown.Item>
                         <NavDropdown.Item as={Link} to="/wishlist">Wishlist</NavDropdown.Item>
