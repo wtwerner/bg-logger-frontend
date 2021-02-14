@@ -1,12 +1,25 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
+import WishlistTable from './WishlistTable'
+import { connect } from 'react-redux'
 
-const WishlistContainer = () => {
-    return (
-        <Container>
-            <h1>WISHLIST</h1>
-        </Container>
-    )
+class WishlistContainer extends React.Component {
+    render() {
+        if(this.props.currentUser) {
+            return (
+                <Container>
+                    <WishlistTable userGames={this.props.userGames.wishlist} />
+                </Container>
+            )
+        }
+    } 
 }
 
-export default WishlistContainer
+const mapStateToProps = ({ userGames, currentUser }) => {
+    return {
+        userGames,
+        currentUser
+    }
+}
+
+export default connect(mapStateToProps)(WishlistContainer)
