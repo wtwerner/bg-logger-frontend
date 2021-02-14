@@ -14,7 +14,6 @@ export const fetchGamesFromQuery = (query) => {
             .then(response => response.json())
             .then(data => {
                 dispatch(searchApiGames(data))
-                // console.log(data)
             })
         .catch(err => console.log(err));
     }
