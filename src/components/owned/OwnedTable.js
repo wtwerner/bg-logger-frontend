@@ -19,7 +19,7 @@ class OwnedTable extends React.Component {
                     {this.props.userGames.map(game => {
                             return (
                                 <tr key={game.id} className="align-middle" >
-                                    <td className="text-center"><img src={game.images.small} /></td>
+                                    <td className="text-center"><img src={game.images.small} alt="game" /></td>
                                     <td className="text-center">{game.name}</td>
                                     <td className="text-center">{game.rank}</td>
                                     <td className="text-center">{game.min_players}-{game.max_players}</td>
