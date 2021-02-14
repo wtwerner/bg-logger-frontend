@@ -22,14 +22,12 @@ class App extends React.Component {
       <div>
         <GlobalNavbar />
         <Container>
-          {/* <Router> */}
             <Route path="/" exact component={Main} />
             <Route path="/discover" exact component={DiscoverContainer} />
             <Route path="/owned" exact component={OwnedContainer} />
             <Route path="/wishlist" exact component={WishlistContainer} />
             <Route path="/sessions" exact component={SessionsContainer} />
             <Route path="/login" exact component={LoginContainer} />
-          {/* </Router> */}
         </Container>
       </div>
     );
