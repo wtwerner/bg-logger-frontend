@@ -11,8 +11,7 @@ class WishlistTable extends React.Component {
                         <th>Title</th>
                         <th>Rank</th>
                         <th>Players</th>
-                        <th>Add a Play</th>
-                        <th>View Plays</th>
+                        <th>Add to Owned</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,8 +22,7 @@ class WishlistTable extends React.Component {
                                     <td className="text-center">{game.name}</td>
                                     <td className="text-center">{game.rank}</td>
                                     <td className="text-center">{game.min_players}-{game.max_players}</td>
-                                    <td className="text-center"><Button>Add a Play</Button></td>
-                                    <td className="text-center"><Button>View Plays</Button></td>
+                                    <td className="text-center"><Button>Owned</Button></td>
                                 </tr>
                             )}
                     )}
