@@ -8,7 +8,7 @@ class OwnedContainer extends React.Component {
         if(this.props.currentUser) {
             return (
                 <Container>
-                    <OwnedTable userGames={this.props.userGames} />
+                    <OwnedTable userGames={this.props.userGames.owned} />
                 </Container>
             )
         }
