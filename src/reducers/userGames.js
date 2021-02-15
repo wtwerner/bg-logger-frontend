@@ -11,6 +11,12 @@ const userGames = (state = {}, action) => {
                 wishlist: action.games.games
                 
             }
+        case 'ADD_TO_WISHLIST':
+            return {
+                ...state,
+                wishlist: state.wishlist.concat(action.game)
+                
+            }
         default:
             return state
     }

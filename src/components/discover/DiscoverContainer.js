@@ -5,13 +5,12 @@ import DiscoverTable from './DiscoverTable'
 import { connect } from 'react-redux'
 
 class DiscoverContainer extends React.Component {
-
     render() {
         return (
             <Container className="d-grid gap-3">
                 <div/>
                 <DiscoverForm />
-                <DiscoverTable games={this.props.apiGames}/>
+                <DiscoverTable games={this.props.apiGames} />
             </Container>
         )
     }

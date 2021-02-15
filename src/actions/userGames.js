@@ -15,6 +15,20 @@ export const addOwnedGames = games => {
     }
 }
 
+export const addToWishlist = game => {
+    return{
+        type: 'ADD_TO_WISHLIST',
+        game
+    }    
+}
+
+export const addToOwned = game => {
+    return{
+        type: 'ADD_TO_OWNED',
+        game
+    }    
+}
+
 export const fetchGameFromId = (user) => {
     return dispatch => {
         let ownedIdsString = ''
@@ -31,6 +45,24 @@ export const fetchGameFromId = (user) => {
         }
         if (wishlistIdsString !== '') {
             dispatch(fetchWishlistGames(wishlistIdsString))
+        }
+    }
+}
+
+export const fetchGameFromButton = (game) => {
+    return dispatch => {
+        let ownedIdsString = ''
+        let wishlistIdsString = ''
+        if (game.owned) {
+            ownedIdsString += `${game.bga_id},`
+        } else if (game.wishlist) {
+            wishlistIdsString += `${game.bga_id},`
+        }
+        if (ownedIdsString !== '') {
+            dispatch(fetchOwnedGamesFromButton(ownedIdsString))
+        }
+        if (wishlistIdsString !== '') {
+            dispatch(fetchWishlistGamesFromButton(wishlistIdsString))
         }
     }
 }
@@ -56,3 +88,55 @@ export const fetchWishlistGames = (string) => {
         .catch(err => console.log(err));
     }
 }
+
+export const fetchWishlistGamesFromButton = (string) => {
+    return dispatch => {
+        return fetch(API_URL+'search?ids='+string+CLIENT_ID)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                dispatch(addToWishlist(data.games[0]))
+            })
+        .catch(err => console.log(err));
+    }
+}
+
+export const fetchOwnedGamesFromButton = (string) => {
+    return dispatch => {
+        return fetch(API_URL+'search?ids='+string+CLIENT_ID)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                dispatch(addToOwned(data.games[0]))
+            })
+        .catch(err => console.log(err));
+    }
+}
+
+export const createWishlistGame = (id) => {
+    return dispatch => {
+        console.log("Creating wishlist game with ID " + id)
+      const sendableGameData = {
+        bga_id: id,
+        wishlist: true,
+        owned: false
+      }
+      return fetch("http://localhost:3001/api/v1/games", {
+        credentials: "include",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(sendableGameData)
+      })
+        .then(r => r.json())
+        .then(resp => {
+          if (resp.error) {
+            alert(resp.error)
+          } else {
+            dispatch(fetchGameFromButton(resp))
+          }
+        })
+        .catch(console.log)
+    }
+  }
