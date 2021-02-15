@@ -1,4 +1,4 @@
-const userGames = (state = {}, action) => {
+const userGames = (state = {wishlist: [], owned: []}, action) => {
     switch (action.type) {
         case 'ADD_OWNED_GAMES':
             return {
