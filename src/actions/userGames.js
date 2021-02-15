@@ -22,6 +22,13 @@ export const addToWishlist = game => {
     }    
 }
 
+export const deleteWishlistGame = game => {
+    return{
+        type: 'DELETE_WISHLIST_GAME',
+        game
+    }    
+}
+
 export const addToOwned = game => {
     return{
         type: 'ADD_TO_OWNED',
@@ -116,55 +123,83 @@ export const fetchOwnedGamesFromButton = (string) => {
 export const createWishlistGame = (id) => {
     return dispatch => {
         console.log("Creating wishlist game with ID " + id)
-      const sendableGameData = {
-        bga_id: id,
-        wishlist: true,
-        owned: false
-      }
-      return fetch("http://localhost:3001/api/v1/games", {
-        credentials: "include",
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(sendableGameData)
-      })
-        .then(r => r.json())
-        .then(resp => {
-          if (resp.error) {
-            alert(resp.error)
-          } else {
-            dispatch(fetchGameFromButton(resp))
-          }
+        const sendableGameData = {
+            bga_id: id,
+            wishlist: true,
+            owned: false
+        }
+        return fetch("http://localhost:3001/api/v1/games", {
+            credentials: "include",
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(sendableGameData)
         })
-        .catch(console.log)
+            .then(r => r.json())
+            .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                dispatch(fetchGameFromButton(resp))
+            }
+            })
+            .catch(console.log)
     }
 }
 
 export const createOwnedGame = (id) => {
     return dispatch => {
         console.log("Creating owned game with ID " + id)
-      const sendableGameData = {
-        bga_id: id,
-        wishlist: false,
-        owned: true
-      }
-      return fetch("http://localhost:3001/api/v1/games", {
-        credentials: "include",
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(sendableGameData)
-      })
-        .then(r => r.json())
-        .then(resp => {
-          if (resp.error) {
-            alert(resp.error)
-          } else {
-            dispatch(fetchGameFromButton(resp))
-          }
+        const sendableGameData = {
+            bga_id: id,
+            wishlist: false,
+            owned: true
+        }
+        return fetch("http://localhost:3001/api/v1/games", {
+            credentials: "include",
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(sendableGameData)
         })
-        .catch(console.log)
+            .then(r => r.json())
+            .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                dispatch(fetchGameFromButton(resp))
+            }
+            })
+            .catch(console.log)
+    }
+}
+
+export const removeWishlistGameById = (id) => {
+    return dispatch => {
+        console.log("Removing wishlist game with ID " + id)
+        const sendableGameData = {
+            bga_id: id,
+            wishlist: false,
+            owned: false
+        }
+        return fetch(`http://localhost:3001/api/v1/games/${id}`, {
+            credentials: "include",
+            method: "DELETE",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(sendableGameData)
+        })
+            .then(r => r.json())
+            .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                dispatch(deleteWishlistGame(resp))
+            }
+            })
+            .catch(console.log)
     }
 }

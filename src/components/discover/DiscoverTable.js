@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap'
 import { createWishlistGame } from '../../actions/userGames'
+import { removeWishlistGameById } from '../../actions/userGames'
 import { createOwnedGame } from '../../actions/userGames'
 import { connect } from 'react-redux'
 
@@ -8,8 +9,11 @@ import { connect } from 'react-redux'
 const DiscoverTable = (props) => {
     
     const handleWishlistClick = event => {
-        event.preventDefault()
-        props.createWishlistGame(event.target.parentElement.parentElement.getAttribute('game_id'))
+        if (event.target.getAttribute('wishlisted') === 'true' ) {
+            props.removeWishlistGameById(event.target.parentElement.parentElement.getAttribute('game_id'))
+        } else {
+            props.createWishlistGame(event.target.parentElement.parentElement.getAttribute('game_id'))
+        }
     }
 
     const handleOwnedClick = event => {
@@ -19,12 +23,14 @@ const DiscoverTable = (props) => {
 
     const findItem = (obj, value) => {
         let result = false
-        for (let i = 0; i < obj.length; i++) {
-            if (obj[i].id === value) {
-                result = true
+        if (obj) {
+            for (let i = 0; i < obj.length; i++) {
+                if (obj[i].id === value) {
+                    result = true
+                }
             }
-        }
-        return result    
+            return result  
+        }  
     }
 
     return (
@@ -37,7 +43,7 @@ const DiscoverTable = (props) => {
                     <th>Players</th>
                     <th>Price</th>
                     <th>Add to Wishlist</th>
-                    <th>Add to Collection</th>
+                    <th>Add to Owned</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,14 +58,14 @@ const DiscoverTable = (props) => {
                                 <td className="text-center">{'$'+(game.price > 0.01 ? game.price : 'N/A')}</td>
                                 <td className="text-center">
                                     {findItem(props.userGames.wishlist, game.id)
-                                        ? <Button disabled={true} onClick={handleWishlistClick}>✓</Button>
-                                        : <Button disabled={false} onClick={handleWishlistClick}>Add to Wishlist</Button>
+                                        ? <Button wishlisted="true" variant="secondary" onClick={handleWishlistClick}>Remove</Button>
+                                        : <Button wishlisted="false" variant="primary" onClick={handleWishlistClick}>Add to Wishlist</Button>
                                     }
                                 </td>
                                 <td className="text-center">
                                     {findItem(props.userGames.owned, game.id)
-                                        ? <Button disabled={true} onClick={handleOwnedClick}>✓</Button>
-                                        : <Button disabled={false} onClick={handleOwnedClick}>Add to Owned</Button>
+                                        ? <Button owned="true" variant="secondary" onClick={handleOwnedClick}>Remove</Button>
+                                        : <Button owned="false" variant="primary" onClick={handleOwnedClick}>Add to Owned</Button>
                                     }
                                 </td>
                             </tr>
@@ -74,4 +80,4 @@ const DiscoverTable = (props) => {
 
 }
 
-export default connect(null, { createWishlistGame, createOwnedGame } )(DiscoverTable)
+export default connect(null, { createWishlistGame, createOwnedGame, removeWishlistGameById } )(DiscoverTable)
