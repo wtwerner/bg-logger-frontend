@@ -1,10 +1,5 @@
 import React from 'react'
-import { Table, Button } from 'react-bootstrap'
-import { createWishlistGame } from '../../actions/userGames'
-import { removeWishlistGameById } from '../../actions/userGames'
-import { createOwnedGame } from '../../actions/userGames'
-import { removeOwnedGameById } from '../../actions/userGames'
-import { connect } from 'react-redux'
+import { Table } from 'react-bootstrap'
 import OwnedButton from '../buttons/OwnedButton'
 import WishlistButton from '../buttons/WishlistButton'
 
@@ -52,4 +47,4 @@ const DiscoverTable = (props) => {
 
 }
 
-export default connect(null, { createWishlistGame, createOwnedGame, removeWishlistGameById, removeOwnedGameById } )(DiscoverTable)
+export default DiscoverTable
