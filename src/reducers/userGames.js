@@ -17,6 +17,12 @@ const userGames = (state = {}, action) => {
                 wishlist: state.wishlist.concat(action.game)
                 
             }
+        case 'ADD_TO_OWNED':
+            return {
+                ...state,
+                owned: state.owned.concat(action.game)
+                
+            }
         default:
             return state
     }

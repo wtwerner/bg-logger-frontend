@@ -139,4 +139,32 @@ export const createWishlistGame = (id) => {
         })
         .catch(console.log)
     }
-  }
+}
+
+export const createOwnedGame = (id) => {
+    return dispatch => {
+        console.log("Creating owned game with ID " + id)
+      const sendableGameData = {
+        bga_id: id,
+        wishlist: false,
+        owned: true
+      }
+      return fetch("http://localhost:3001/api/v1/games", {
+        credentials: "include",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(sendableGameData)
+      })
+        .then(r => r.json())
+        .then(resp => {
+          if (resp.error) {
+            alert(resp.error)
+          } else {
+            dispatch(fetchGameFromButton(resp))
+          }
+        })
+        .catch(console.log)
+    }
+}

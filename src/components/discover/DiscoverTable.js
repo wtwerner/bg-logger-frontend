@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap'
 import { createWishlistGame } from '../../actions/userGames'
+import { createOwnedGame } from '../../actions/userGames'
 import { connect } from 'react-redux'
 
 
@@ -9,6 +10,11 @@ const DiscoverTable = (props) => {
     const handleWishlistClick = event => {
         event.preventDefault()
         props.createWishlistGame(event.target.parentElement.parentElement.getAttribute('game_id'))
+    }
+
+    const handleOwnedClick = event => {
+        event.preventDefault()
+        props.createOwnedGame(event.target.parentElement.parentElement.getAttribute('game_id'))
     }
 
     return (
@@ -35,7 +41,7 @@ const DiscoverTable = (props) => {
                                 <td className="text-center">{game.min_players}-{game.max_players}</td>
                                 <td className="text-center">{'$'+(game.price > 0.01 ? game.price : 'N/A')}</td>
                                 <td className="text-center"><Button onClick={handleWishlistClick}>Wishlist</Button></td>
-                                <td className="text-center"><Button>Collection</Button></td>
+                                <td className="text-center"><Button onClick={handleOwnedClick}>Owned</Button></td>
                             </tr>
                         )    
                     } else {
@@ -48,4 +54,4 @@ const DiscoverTable = (props) => {
 
 }
 
-export default connect(null, { createWishlistGame } )(DiscoverTable)
+export default connect(null, { createWishlistGame, createOwnedGame } )(DiscoverTable)
