@@ -3,6 +3,7 @@ import { Table, Button } from 'react-bootstrap'
 import { createWishlistGame } from '../../actions/userGames'
 import { removeWishlistGameById } from '../../actions/userGames'
 import { createOwnedGame } from '../../actions/userGames'
+import { removeOwnedGameById } from '../../actions/userGames'
 import { connect } from 'react-redux'
 
 
@@ -17,8 +18,12 @@ const DiscoverTable = (props) => {
     }
 
     const handleOwnedClick = event => {
-        event.preventDefault()
-        props.createOwnedGame(event.target.parentElement.parentElement.getAttribute('game_id'))
+        console.log(event.target.getAttribute('owned') === 'true')
+        if (event.target.getAttribute('owned') === 'true' ) {
+            props.removeOwnedGameById(event.target.parentElement.parentElement.getAttribute('game_id'))
+        } else {
+            props.createOwnedGame(event.target.parentElement.parentElement.getAttribute('game_id'))
+        }
     }
 
     const findItem = (obj, value) => {
@@ -80,4 +85,4 @@ const DiscoverTable = (props) => {
 
 }
 
-export default connect(null, { createWishlistGame, createOwnedGame, removeWishlistGameById } )(DiscoverTable)
+export default connect(null, { createWishlistGame, createOwnedGame, removeWishlistGameById, removeOwnedGameById } )(DiscoverTable)

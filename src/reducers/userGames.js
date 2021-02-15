@@ -28,6 +28,11 @@ const userGames = (state = {}, action) => {
                 ...state,
                 wishlist: state.wishlist.filter(game => game.id !== action.game.bga_id)
             }
+        case 'DELETE_OWNED_GAME':
+            return {
+                ...state,
+                owned: state.owned.filter(game => game.id !== action.game.bga_id)
+            }
         default:
             return state
     }

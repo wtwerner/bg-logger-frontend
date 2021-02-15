@@ -36,6 +36,13 @@ export const addToOwned = game => {
     }    
 }
 
+export const deleteOwnedGame = game => {
+    return{
+        type: 'DELETE_OWNED_GAME',
+        game
+    }    
+}
+
 export const fetchGameFromId = (user) => {
     return dispatch => {
         let ownedIdsString = ''
@@ -180,9 +187,7 @@ export const removeWishlistGameById = (id) => {
     return dispatch => {
         console.log("Removing wishlist game with ID " + id)
         const sendableGameData = {
-            bga_id: id,
-            wishlist: false,
-            owned: false
+            bga_id: id
         }
         return fetch(`http://localhost:3001/api/v1/games/${id}`, {
             credentials: "include",
@@ -198,6 +203,32 @@ export const removeWishlistGameById = (id) => {
                 alert(resp.error)
             } else {
                 dispatch(deleteWishlistGame(resp))
+            }
+            })
+            .catch(console.log)
+    }
+}
+
+export const removeOwnedGameById = (id) => {
+    return dispatch => {
+        console.log("Removing owned game with ID " + id)
+        const sendableGameData = {
+            bga_id: id
+        }
+        return fetch(`http://localhost:3001/api/v1/games/${id}`, {
+            credentials: "include",
+            method: "DELETE",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(sendableGameData)
+        })
+            .then(r => r.json())
+            .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                dispatch(deleteOwnedGame(resp))
             }
             })
             .catch(console.log)
