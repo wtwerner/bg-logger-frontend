@@ -17,6 +17,16 @@ const DiscoverTable = (props) => {
         props.createOwnedGame(event.target.parentElement.parentElement.getAttribute('game_id'))
     }
 
+    const findItem = (obj, value) => {
+        let result = false
+        for (let i = 0; i < obj.length; i++) {
+            if (obj[i].id === value) {
+                result = true
+            }
+        }
+        return result    
+    }
+
     return (
         <Table striped bordered hover className="pt-10">
             <thead>
@@ -40,8 +50,18 @@ const DiscoverTable = (props) => {
                                 <td className="text-center">{game.rank < 1000 ? game.rank : 'N/A'}</td>
                                 <td className="text-center">{game.min_players}-{game.max_players}</td>
                                 <td className="text-center">{'$'+(game.price > 0.01 ? game.price : 'N/A')}</td>
-                                <td className="text-center"><Button onClick={handleWishlistClick}>Wishlist</Button></td>
-                                <td className="text-center"><Button onClick={handleOwnedClick}>Owned</Button></td>
+                                <td className="text-center">
+                                    {findItem(props.userGames.wishlist, game.id)
+                                        ? <Button disabled={true} onClick={handleWishlistClick}>✓</Button>
+                                        : <Button disabled={false} onClick={handleWishlistClick}>Add to Wishlist</Button>
+                                    }
+                                </td>
+                                <td className="text-center">
+                                    {findItem(props.userGames.owned, game.id)
+                                        ? <Button disabled={true} onClick={handleOwnedClick}>✓</Button>
+                                        : <Button disabled={false} onClick={handleOwnedClick}>Add to Owned</Button>
+                                    }
+                                </td>
                             </tr>
                         )    
                     } else {
