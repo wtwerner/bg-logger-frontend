@@ -5,38 +5,11 @@ import { removeWishlistGameById } from '../../actions/userGames'
 import { createOwnedGame } from '../../actions/userGames'
 import { removeOwnedGameById } from '../../actions/userGames'
 import { connect } from 'react-redux'
+import OwnedButton from '../buttons/OwnedButton'
+import WishlistButton from '../buttons/WishlistButton'
 
 
 const DiscoverTable = (props) => {
-    
-    const handleWishlistClick = event => {
-        if (event.target.getAttribute('wishlisted') === 'true' ) {
-            props.removeWishlistGameById(event.target.parentElement.parentElement.getAttribute('game_id'))
-        } else {
-            props.createWishlistGame(event.target.parentElement.parentElement.getAttribute('game_id'))
-        }
-    }
-
-    const handleOwnedClick = event => {
-        console.log(event.target.getAttribute('owned') === 'true')
-        if (event.target.getAttribute('owned') === 'true' ) {
-            props.removeOwnedGameById(event.target.parentElement.parentElement.getAttribute('game_id'))
-        } else {
-            props.createOwnedGame(event.target.parentElement.parentElement.getAttribute('game_id'))
-        }
-    }
-
-    const findItem = (obj, value) => {
-        let result = false
-        if (obj) {
-            for (let i = 0; i < obj.length; i++) {
-                if (obj[i].id === value) {
-                    result = true
-                }
-            }
-            return result  
-        }  
-    }
 
     return (
         <Table striped bordered hover className="pt-10">
@@ -62,16 +35,10 @@ const DiscoverTable = (props) => {
                                 <td className="text-center">{game.min_players}-{game.max_players}</td>
                                 <td className="text-center">{'$'+(game.price > 0.01 ? game.price : 'N/A')}</td>
                                 <td className="text-center">
-                                    {findItem(props.userGames.wishlist, game.id)
-                                        ? <Button wishlisted="true" variant="secondary" onClick={handleWishlistClick}>Remove</Button>
-                                        : <Button wishlisted="false" variant="primary" onClick={handleWishlistClick}>Add to Wishlist</Button>
-                                    }
+                                    <WishlistButton game_id={game.id} />
                                 </td>
                                 <td className="text-center">
-                                    {findItem(props.userGames.owned, game.id)
-                                        ? <Button owned="true" variant="secondary" onClick={handleOwnedClick}>Remove</Button>
-                                        : <Button owned="false" variant="primary" onClick={handleOwnedClick}>Add to Owned</Button>
-                                    }
+                                    <OwnedButton game_id={game.id} />
                                 </td>
                             </tr>
                         )    
