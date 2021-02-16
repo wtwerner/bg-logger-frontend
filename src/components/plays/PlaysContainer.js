@@ -8,7 +8,7 @@ class PlaysContainer extends React.Component {
         if (this.props.currentUser) {
             return (
                 <Container>
-                    <PlaysTable />
+                    <PlaysTable userPlays={this.props.userPlays} />
                 </Container>
             )
         } else {
@@ -17,10 +17,11 @@ class PlaysContainer extends React.Component {
     }
 }
 
-const mapStateToProps = ({ userGames, currentUser }) => {
+const mapStateToProps = ({ userGames, currentUser, userPlays }) => {
     return {
         userGames,
-        currentUser
+        currentUser,
+        userPlays
     }
 }
 
