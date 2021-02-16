@@ -11,6 +11,8 @@ class OwnedContainer extends React.Component {
                     <OwnedTable userGames={this.props.userGames.owned} />
                 </Container>
             )
+        } else {
+            return null
         }
     } 
 }

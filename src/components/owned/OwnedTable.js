@@ -14,7 +14,7 @@ class OwnedTable extends React.Component {
                         <th>Players</th>
                         <th>Add a Play</th>
                         <th>View Plays</th>
-                        <th>Remove from Owned</th>
+                        <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -11,6 +11,8 @@ class WishlistContainer extends React.Component {
                     <WishlistTable userGames={this.props.userGames.wishlist} />
                 </Container>
             )
+        } else {
+            return null
         }
     } 
 }
