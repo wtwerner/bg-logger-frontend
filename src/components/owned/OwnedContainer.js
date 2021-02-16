@@ -5,14 +5,14 @@ import { connect } from 'react-redux'
 
 class OwnedContainer extends React.Component {
     render() {
-        if(this.props.currentUser) {
+        if (this.props.currentUser) {
             return (
                 <Container>
                     <OwnedTable userGames={this.props.userGames.owned} />
                 </Container>
             )
         } else {
-            return null
+            return <p>Sign up or sign in to see this page.</p>
         }
     } 
 }

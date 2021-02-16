@@ -12,7 +12,7 @@ class WishlistContainer extends React.Component {
                 </Container>
             )
         } else {
-            return null
+            return <p>Sign up or sign in to see this page.</p>
         }
     } 
 }
