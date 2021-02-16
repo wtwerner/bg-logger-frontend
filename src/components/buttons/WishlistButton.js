@@ -16,7 +16,7 @@ const WishlistButton = (props) => {
 
     const findItem = (obj, value) => {
         let result = false
-        if (obj) {
+        if (obj !== undefined) {
             for (let i = 0; i < obj.length; i++) {
                 if (obj[i].id === value) {
                     result = true

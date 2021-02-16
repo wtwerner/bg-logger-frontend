@@ -1,5 +1,7 @@
 import React from 'react'
-import { Table, Button } from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
+import WishlistButton from '../buttons/WishlistButton'
+import WishlistToOwnedButton from '../buttons/WishlistToOwnedButton'
 
 class WishlistTable extends React.Component {
     render() {
@@ -11,18 +13,24 @@ class WishlistTable extends React.Component {
                         <th>Title</th>
                         <th>Rank</th>
                         <th>Players</th>
+                        <th>Remove</th>
                         <th>Add to Owned</th>
                     </tr>
                 </thead>
                 <tbody>
                     {this.props.userGames.map(game => {
                             return (
-                                <tr key={game.id} className="align-middle" >
+                                <tr key={game.id} game_id={game.id} className="align-middle" >
                                     <td className="text-center"><img src={game.images.small} alt="game" /></td>
                                     <td className="text-center">{game.name}</td>
                                     <td className="text-center">{game.rank}</td>
                                     <td className="text-center">{game.min_players}-{game.max_players}</td>
-                                    <td className="text-center"><Button>Owned</Button></td>
+                                    <td className="text-center">
+                                        <WishlistButton game_id={game.id} />
+                                    </td>
+                                    <td className="text-center">
+                                        <WishlistToOwnedButton game_id={game.id} />
+                                    </td>
                                 </tr>
                             )}
                     )}

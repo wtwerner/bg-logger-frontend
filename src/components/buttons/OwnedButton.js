@@ -7,7 +7,6 @@ import { connect } from 'react-redux'
 const OwnedButton = (props) => {
 
     const handleOwnedClick = event => {
-        console.log(event.target.getAttribute('owned') === 'true')
         if (event.target.getAttribute('owned') === 'true' ) {
             props.removeOwnedGameById(event.target.parentElement.parentElement.getAttribute('game_id'))
         } else {

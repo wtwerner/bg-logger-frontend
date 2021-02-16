@@ -129,7 +129,7 @@ export const fetchOwnedGamesFromButton = (string) => {
 
 export const createWishlistGame = (id) => {
     return dispatch => {
-        console.log("Creating wishlist game with ID " + id)
+        console.log("Creating wishlist game with id " + id)
         const sendableGameData = {
             bga_id: id,
             wishlist: true,
@@ -157,7 +157,7 @@ export const createWishlistGame = (id) => {
 
 export const createOwnedGame = (id) => {
     return dispatch => {
-        console.log("Creating owned game with ID " + id)
+        console.log("Creating owned game with id " + id)
         const sendableGameData = {
             bga_id: id,
             wishlist: false,
@@ -185,7 +185,7 @@ export const createOwnedGame = (id) => {
 
 export const removeWishlistGameById = (id) => {
     return dispatch => {
-        console.log("Removing wishlist game with ID " + id)
+        console.log("Removing wishlist game with id " + id)
         const sendableGameData = {
             bga_id: id
         }
@@ -211,7 +211,7 @@ export const removeWishlistGameById = (id) => {
 
 export const removeOwnedGameById = (id) => {
     return dispatch => {
-        console.log("Removing owned game with ID " + id)
+        console.log("Removing owned game with id " + id)
         const sendableGameData = {
             bga_id: id
         }
@@ -229,6 +229,34 @@ export const removeOwnedGameById = (id) => {
                 alert(resp.error)
             } else {
                 dispatch(deleteOwnedGame(resp))
+            }
+            })
+            .catch(console.log)
+    }
+}
+
+export const moveToOwned = (id) => {
+    return dispatch => {
+        console.log("Moving game with id " + id + " to owned")
+        const sendableGameData = {
+            owned: true,
+            wishlist: false
+        }
+        return fetch(`http://localhost:3001/api/v1/games/${id}`, {
+            credentials: "include",
+            method: "PATCH",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(sendableGameData)
+        })
+            .then(r => r.json())
+            .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                dispatch(deleteWishlistGame(resp))
+                dispatch(fetchOwnedGamesFromButton(resp.bga_id))
             }
             })
             .catch(console.log)
