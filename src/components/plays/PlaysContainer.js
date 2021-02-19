@@ -17,9 +17,9 @@ class PlaysContainer extends React.Component {
     }
 }
 
-const mapStateToProps = ({ userGames, currentUser, userPlays }) => {
+const mapStateToProps = ({ games, currentUser, userPlays }) => {
     return {
-        userGames,
+        games,
         currentUser,
         userPlays
     }

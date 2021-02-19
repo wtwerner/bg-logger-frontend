@@ -1,4 +1,4 @@
-import { fetchGameFromId } from './userGames'
+import { fetchGamesFromUser } from './games'
 
 // Synchronous Action Creators
 
@@ -33,7 +33,7 @@ export const login = (credentials) => {
               alert(response.error)
             } else {
               dispatch(setCurrentUser(response))
-              dispatch(fetchGameFromId(response))
+              dispatch(fetchGamesFromUser(response))
             }
         })
           .catch(console.log)
@@ -65,7 +65,7 @@ export const getCurrentUser = () => {
           console.log(response.error)
         } else {
           dispatch(setCurrentUser(response))
-          dispatch(fetchGameFromId(response))
+          dispatch(fetchGamesFromUser(response))
         }
       })
       .catch(console.log)

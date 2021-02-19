@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
-import { createWishlistGame } from '../../actions/userGames'
-import { removeWishlistGameById } from '../../actions/userGames'
+import { createWishlistGame } from '../../actions/games'
+import { removeWishlistGameById } from '../../actions/games'
 import { connect } from 'react-redux'
 
 const WishlistButton = (props) => {
@@ -27,16 +27,16 @@ const WishlistButton = (props) => {
     }
 
     return (
-        findItem(props.userGames.wishlist, props.game_id)
+        findItem(props.games.wishlist, props.game_id)
         ? <Button wishlisted="true" variant="secondary" onClick={handleWishlistClick}>Remove</Button>
         : <Button wishlisted="false" variant="primary" onClick={handleWishlistClick}>Add to Wishlist</Button>
     )
 
 }
 
-const mapStateToProps = ({ userGames }) => {
+const mapStateToProps = ({ games }) => {
     return {
-        userGames
+        games
     }
 }
 

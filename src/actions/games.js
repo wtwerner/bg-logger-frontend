@@ -1,6 +1,9 @@
 const API_URL = 'https://api.boardgameatlas.com/api/'
 const CLIENT_ID = '&client_id=0hcbB6EyEf'
 
+
+// Synchronous
+
 export const addWishlistGames = games => {
     return {
       type: "ADD_WISHLIST_GAMES",
@@ -43,7 +46,30 @@ export const deleteOwnedGame = game => {
     }    
 }
 
-export const fetchGameFromId = (user) => {
+export const searchApiGames = games => {
+    return {
+      type: "SEARCH_API_GAMES",
+      games
+    }
+}
+
+// Fetch from BGA API
+
+export const fetchGamesFromQuery = (query) => {
+    return dispatch => {
+        return fetch(API_URL+'search?name='+query+CLIENT_ID+'&fuzzy_match=true')
+            .then(response => response.json())
+            .then(data => {
+                dispatch(searchApiGames(data))
+            })
+        .catch(err => console.log(err));
+    }
+}
+
+
+// Fetch from User
+
+export const fetchGamesFromUser = (user) => {
     return dispatch => {
         let ownedIdsString = ''
         let wishlistIdsString = ''
@@ -55,53 +81,26 @@ export const fetchGameFromId = (user) => {
             }
         })
         if (ownedIdsString !== '') {
-            dispatch(fetchOwnedGames(ownedIdsString))
-        }
-        if (wishlistIdsString !== '') {
-            dispatch(fetchWishlistGames(wishlistIdsString))
-        }
-    }
-}
-
-export const fetchGameFromButton = (game) => {
-    return dispatch => {
-        let ownedIdsString = ''
-        let wishlistIdsString = ''
-        if (game.owned) {
-            ownedIdsString += `${game.bga_id},`
-        } else if (game.wishlist) {
-            wishlistIdsString += `${game.bga_id},`
-        }
-        if (ownedIdsString !== '') {
-            dispatch(fetchOwnedGamesFromButton(ownedIdsString))
-        }
-        if (wishlistIdsString !== '') {
-            dispatch(fetchWishlistGamesFromButton(wishlistIdsString))
-        }
-    }
-}
-
-export const fetchOwnedGames = (string) => {
-    return dispatch => {
-        return fetch(API_URL+'search?ids='+string+CLIENT_ID)
+            fetch(API_URL+'search?ids='+ownedIdsString+CLIENT_ID)
             .then(response => response.json())
             .then(data => {
                 dispatch(addOwnedGames(data))
             })
-        .catch(err => console.log(err));
-    }
-}
-
-export const fetchWishlistGames = (string) => {
-    return dispatch => {
-        return fetch(API_URL+'search?ids='+string+CLIENT_ID)
+            .catch(err => console.log(err));
+        }
+        if (wishlistIdsString !== '') {
+            fetch(API_URL+'search?ids='+wishlistIdsString+CLIENT_ID)
             .then(response => response.json())
             .then(data => {
                 dispatch(addWishlistGames(data))
             })
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
+        }
     }
 }
+
+
+// Fetch from API
 
 export const fetchWishlistGamesFromButton = (string) => {
     return dispatch => {
@@ -124,6 +123,24 @@ export const fetchOwnedGamesFromButton = (string) => {
                 dispatch(addToOwned(data.games[0]))
             })
         .catch(err => console.log(err));
+    }
+}
+
+export const fetchGameFromButton = (game) => {
+    return dispatch => {
+        let ownedIdsString = ''
+        let wishlistIdsString = ''
+        if (game.owned) {
+            ownedIdsString += `${game.bga_id},`
+        } else if (game.wishlist) {
+            wishlistIdsString += `${game.bga_id},`
+        }
+        if (ownedIdsString !== '') {
+            dispatch(fetchOwnedGamesFromButton(ownedIdsString))
+        }
+        if (wishlistIdsString !== '') {
+            dispatch(fetchWishlistGamesFromButton(wishlistIdsString))
+        }
     }
 }
 

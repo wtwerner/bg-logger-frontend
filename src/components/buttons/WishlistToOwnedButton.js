@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
-import { moveToOwned } from '../../actions/userGames'
+import { moveToOwned } from '../../actions/games'
 import { connect } from 'react-redux'
 
 const WishlistToOwnedButton = (props) => {
@@ -15,10 +15,4 @@ const WishlistToOwnedButton = (props) => {
 
 }
 
-const mapStateToProps = ({ userGames }) => {
-    return {
-        userGames
-    }
-}
-
-export default connect(mapStateToProps, { moveToOwned } )(WishlistToOwnedButton)
+export default connect(null , { moveToOwned } )(WishlistToOwnedButton)

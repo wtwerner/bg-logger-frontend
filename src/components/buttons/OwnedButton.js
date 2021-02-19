@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
-import { createOwnedGame } from '../../actions/userGames'
-import { removeOwnedGameById } from '../../actions/userGames'
+import { createOwnedGame } from '../../actions/games'
+import { removeOwnedGameById } from '../../actions/games'
 import { connect } from 'react-redux'
 
 const OwnedButton = (props) => {
@@ -27,16 +27,16 @@ const OwnedButton = (props) => {
     }
 
     return (
-        findItem(props.userGames.owned, props.game_id)
+        findItem(props.games.owned, props.game_id)
             ? <Button owned="true" variant="secondary" onClick={handleOwnedClick}>Remove</Button>
             : <Button owned="false" variant="primary" onClick={handleOwnedClick}>Add to Owned</Button>
     )
 
 }
 
-const mapStateToProps = ({ userGames }) => {
+const mapStateToProps = ({ games }) => {
     return {
-        userGames
+        games
     }
 }
 

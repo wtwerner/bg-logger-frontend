@@ -8,7 +8,7 @@ class WishlistContainer extends React.Component {
         if(this.props.currentUser) {
             return (
                 <Container>
-                    <WishlistTable userGames={this.props.userGames.wishlist} />
+                    <WishlistTable userGames={this.props.games.wishlist} />
                 </Container>
             )
         } else {
@@ -17,9 +17,9 @@ class WishlistContainer extends React.Component {
     } 
 }
 
-const mapStateToProps = ({ userGames, currentUser }) => {
+const mapStateToProps = ({ games, currentUser }) => {
     return {
-        userGames,
+        games,
         currentUser
     }
 }

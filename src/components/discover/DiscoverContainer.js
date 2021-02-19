@@ -10,16 +10,15 @@ class DiscoverContainer extends React.Component {
             <Container className="d-grid gap-3">
                 <div/>
                 <DiscoverForm />
-                <DiscoverTable games={this.props.apiGames} userGames={this.props.userGames} />
+                <DiscoverTable games={this.props.games.discover} />
             </Container>
         )
     }
 }
 
-const mapStateToProps = ({ apiGames, userGames }) => {
+const mapStateToProps = ({ games }) => {
     return {
-        apiGames, 
-        userGames
+        games
     }
 }
 

@@ -1,4 +1,4 @@
-const userGames = (state = {wishlist: [], owned: []}, action) => {
+const games = (state = {wishlist: [], owned: [], discover: []}, action) => {
     switch (action.type) {
         case 'ADD_OWNED_GAMES':
             return {
@@ -33,9 +33,14 @@ const userGames = (state = {wishlist: [], owned: []}, action) => {
                 ...state,
                 owned: state.owned.filter(game => game.id !== action.game.bga_id)
             }
+        case 'SEARCH_API_GAMES':
+            return {
+                ...state,
+                discover: action.games.games
+            }
         default:
             return state
     }
 }
 
-export default userGames
+export default games

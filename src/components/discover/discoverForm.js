@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updateDiscoverForm } from "../../actions/discoverForm.js"
-import { fetchGamesFromQuery } from "../../actions/apiGames.js"
+import { fetchGamesFromQuery } from "../../actions/games.js"
 import { Form, Button, InputGroup } from 'react-bootstrap'
 
 const DiscoverForm = ({ discoverFormData, updateDiscoverForm, fetchGamesFromQuery }) => {
