@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import { createOwnedGame } from '../../actions/games'
-import { removeOwnedGameById } from '../../actions/games'
+import { removeOwnedGame } from '../../actions/games'
 import { connect } from 'react-redux'
 
 const OwnedButton = (props) => {
 
     const handleOwnedClick = event => {
         if (event.target.getAttribute('owned') === 'true' ) {
-            props.removeOwnedGameById(props.game)
+            props.removeOwnedGame(props.game)
             console.log(props)
         } else {
             props.createOwnedGame(props.game)
@@ -42,4 +42,4 @@ const mapStateToProps = ({ games }) => {
     }
 }
 
-export default connect(mapStateToProps, { createOwnedGame, removeOwnedGameById } )(OwnedButton)
+export default connect(mapStateToProps, { createOwnedGame, removeOwnedGame } )(OwnedButton)

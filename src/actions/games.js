@@ -161,7 +161,7 @@ export const createOwnedGame = (game) => {
 
 // Remove games
 
-export const removeWishlistGameById = (game) => {
+export const removeWishlistGame = (game) => {
     return dispatch => {
         console.log("Removing wishlist game with id " + game.id)
         const sendableGameData = {
@@ -187,7 +187,7 @@ export const removeWishlistGameById = (game) => {
     }
 }
 
-export const removeOwnedGameById = (game) => {
+export const removeOwnedGame = (game) => {
     return dispatch => {
         console.log("Removing owned game with id " + game.id)
         const sendableGameData = {
@@ -233,7 +233,7 @@ export const moveToOwned = (game) => {
             if (resp.error) {
                 alert(resp.error)
             } else {
-                dispatch(deleteWishlistGame(game))
+                dispatch(deleteWishlistGame(resp))
                 dispatch(createOwnedGame(game))
             }
             })

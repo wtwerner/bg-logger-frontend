@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 
 const WishlistToOwnedButton = (props) => {
 
-    const handleOwnedClick = event => {
-        props.moveToOwned(event.target.parentElement.parentElement.getAttribute('game_id'))
+    const handleOwnedClick = () => {
+        props.moveToOwned(props.game)
     }
 
     return (

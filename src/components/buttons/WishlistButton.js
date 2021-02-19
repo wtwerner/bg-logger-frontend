@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import { createWishlistGame } from '../../actions/games'
-import { removeWishlistGameById } from '../../actions/games'
+import { removeWishlistGame } from '../../actions/games'
 import { connect } from 'react-redux'
 
 const WishlistButton = (props) => {
 
     const handleWishlistClick = event => {
         if (event.target.getAttribute('wishlisted') === 'true' ) {
-            props.removeWishlistGameById(props.game)
+            props.removeWishlistGame(props.game)
         } else {
             props.createWishlistGame(props.game)
         }
@@ -40,4 +40,4 @@ const mapStateToProps = ({ games }) => {
     }
 }
 
-export default connect(mapStateToProps, { createWishlistGame, removeWishlistGameById } )(WishlistButton)
+export default connect(mapStateToProps, { createWishlistGame, removeWishlistGame } )(WishlistButton)
