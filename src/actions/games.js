@@ -100,7 +100,7 @@ export const fetchGamesFromUser = (user) => {
 }
 
 
-// Fetch from API
+// Add games
 
 export const createWishlistGame = (game) => {
     return dispatch => {
@@ -158,13 +158,16 @@ export const createOwnedGame = (game) => {
     }
 }
 
-export const removeWishlistGameById = (id) => {
+
+// Remove games
+
+export const removeWishlistGameById = (game) => {
     return dispatch => {
-        console.log("Removing wishlist game with id " + id)
+        console.log("Removing wishlist game with id " + game.id)
         const sendableGameData = {
-            bga_id: id
+            bga_id: game.id
         }
-        return fetch(`http://localhost:3001/api/v1/games/${id}`, {
+        return fetch(`http://localhost:3001/api/v1/games/${game.id}`, {
             credentials: "include",
             method: "DELETE",
             headers: {
@@ -184,13 +187,13 @@ export const removeWishlistGameById = (id) => {
     }
 }
 
-export const removeOwnedGameById = (id) => {
+export const removeOwnedGameById = (game) => {
     return dispatch => {
-        console.log("Removing owned game with id " + id)
+        console.log("Removing owned game with id " + game.id)
         const sendableGameData = {
-            bga_id: id
+            bga_id: game.id
         }
-        return fetch(`http://localhost:3001/api/v1/games/${id}`, {
+        return fetch(`http://localhost:3001/api/v1/games/${game.id}`, {
             credentials: "include",
             method: "DELETE",
             headers: {
