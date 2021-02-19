@@ -27,7 +27,7 @@ class OwnedTable extends React.Component {
                                     <td className="text-center">{game.min_players}-{game.max_players}</td>
                                     <td className="text-center"><Button>Add a Play</Button></td>
                                     <td className="text-center"><Button>View Plays</Button></td>
-                                    <td className="text-center"><OwnedButton game_id={game.id} /></td>
+                                    <td className="text-center"><OwnedButton game={game} /></td>
                                 </tr>
                             )}
                     )}

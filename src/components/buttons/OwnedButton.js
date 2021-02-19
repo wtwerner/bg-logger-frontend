@@ -8,9 +8,11 @@ const OwnedButton = (props) => {
 
     const handleOwnedClick = event => {
         if (event.target.getAttribute('owned') === 'true' ) {
-            props.removeOwnedGameById(event.target.parentElement.parentElement.getAttribute('game_id'))
+            props.removeOwnedGameById(props.game)
+            console.log(props)
         } else {
-            props.createOwnedGame(event.target.parentElement.parentElement.getAttribute('game_id'))
+            props.createOwnedGame(props.game)
+            console.log(props)
         }
     }
 
@@ -27,7 +29,7 @@ const OwnedButton = (props) => {
     }
 
     return (
-        findItem(props.games.owned, props.game_id)
+        findItem(props.games.owned, props.game.id)
             ? <Button owned="true" variant="secondary" onClick={handleOwnedClick}>Remove</Button>
             : <Button owned="false" variant="primary" onClick={handleOwnedClick}>Add to Owned</Button>
     )

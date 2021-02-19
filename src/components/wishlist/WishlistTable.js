@@ -29,7 +29,7 @@ class WishlistTable extends React.Component {
                                         <WishlistButton game_id={game.id} />
                                     </td>
                                     <td className="text-center">
-                                        <WishlistToOwnedButton game_id={game.id} />
+                                        <WishlistToOwnedButton game={game} />
                                     </td>
                                 </tr>
                             )}

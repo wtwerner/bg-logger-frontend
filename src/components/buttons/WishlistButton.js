@@ -8,9 +8,9 @@ const WishlistButton = (props) => {
 
     const handleWishlistClick = event => {
         if (event.target.getAttribute('wishlisted') === 'true' ) {
-            props.removeWishlistGameById(event.target.parentElement.parentElement.getAttribute('game_id'))
+            props.removeWishlistGameById(props.game)
         } else {
-            props.createWishlistGame(event.target.parentElement.parentElement.getAttribute('game_id'))
+            props.createWishlistGame(props.game)
         }
     }
 
@@ -27,7 +27,7 @@ const WishlistButton = (props) => {
     }
 
     return (
-        findItem(props.games.wishlist, props.game_id)
+        findItem(props.games.wishlist, props.game.id)
         ? <Button wishlisted="true" variant="secondary" onClick={handleWishlistClick}>Remove</Button>
         : <Button wishlisted="false" variant="primary" onClick={handleWishlistClick}>Add to Wishlist</Button>
     )

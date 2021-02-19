@@ -102,53 +102,11 @@ export const fetchGamesFromUser = (user) => {
 
 // Fetch from API
 
-export const fetchWishlistGamesFromButton = (string) => {
+export const createWishlistGame = (game) => {
     return dispatch => {
-        return fetch(API_URL+'search?ids='+string+CLIENT_ID)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                dispatch(addToWishlist(data.games[0]))
-            })
-        .catch(err => console.log(err));
-    }
-}
-
-export const fetchOwnedGamesFromButton = (string) => {
-    return dispatch => {
-        return fetch(API_URL+'search?ids='+string+CLIENT_ID)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                dispatch(addToOwned(data.games[0]))
-            })
-        .catch(err => console.log(err));
-    }
-}
-
-export const fetchGameFromButton = (game) => {
-    return dispatch => {
-        let ownedIdsString = ''
-        let wishlistIdsString = ''
-        if (game.owned) {
-            ownedIdsString += `${game.bga_id},`
-        } else if (game.wishlist) {
-            wishlistIdsString += `${game.bga_id},`
-        }
-        if (ownedIdsString !== '') {
-            dispatch(fetchOwnedGamesFromButton(ownedIdsString))
-        }
-        if (wishlistIdsString !== '') {
-            dispatch(fetchWishlistGamesFromButton(wishlistIdsString))
-        }
-    }
-}
-
-export const createWishlistGame = (id) => {
-    return dispatch => {
-        console.log("Creating wishlist game with id " + id)
+        console.log("Creating wishlist game with id " + game.id)
         const sendableGameData = {
-            bga_id: id,
+            bga_id: game.id,
             wishlist: true,
             owned: false
         }
@@ -165,18 +123,18 @@ export const createWishlistGame = (id) => {
             if (resp.error) {
                 alert(resp.error)
             } else {
-                dispatch(fetchGameFromButton(resp))
+                dispatch(addToWishlist(game))
             }
             })
             .catch(console.log)
     }
 }
 
-export const createOwnedGame = (id) => {
+export const createOwnedGame = (game) => {
     return dispatch => {
-        console.log("Creating owned game with id " + id)
+        console.log("Creating owned game with id " + game.id)
         const sendableGameData = {
-            bga_id: id,
+            bga_id: game.id,
             wishlist: false,
             owned: true
         }
@@ -193,7 +151,7 @@ export const createOwnedGame = (id) => {
             if (resp.error) {
                 alert(resp.error)
             } else {
-                dispatch(fetchGameFromButton(resp))
+                dispatch(addToOwned(game))
             }
             })
             .catch(console.log)
@@ -252,14 +210,14 @@ export const removeOwnedGameById = (id) => {
     }
 }
 
-export const moveToOwned = (id) => {
+export const moveToOwned = (game) => {
     return dispatch => {
-        console.log("Moving game with id " + id + " to owned")
+        console.log("Moving game with id " + game.id + " to owned")
         const sendableGameData = {
             owned: true,
             wishlist: false
         }
-        return fetch(`http://localhost:3001/api/v1/games/${id}`, {
+        return fetch(`http://localhost:3001/api/v1/games/${game.id}`, {
             credentials: "include",
             method: "PATCH",
             headers: {
@@ -272,8 +230,8 @@ export const moveToOwned = (id) => {
             if (resp.error) {
                 alert(resp.error)
             } else {
-                dispatch(deleteWishlistGame(resp))
-                dispatch(fetchOwnedGamesFromButton(resp.bga_id))
+                dispatch(deleteWishlistGame(game))
+                dispatch(createOwnedGame(game))
             }
             })
             .catch(console.log)

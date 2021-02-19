@@ -30,10 +30,10 @@ const DiscoverTable = (props) => {
                                 <td className="text-center">{game.min_players}-{game.max_players}</td>
                                 <td className="text-center">{'$'+(game.price > 0.01 ? game.price : 'N/A')}</td>
                                 <td className="text-center">
-                                    <WishlistButton game_id={game.id} game={game} />
+                                    <WishlistButton game={game} />
                                 </td>
                                 <td className="text-center">
-                                    <OwnedButton game_id={game.id} />
+                                    <OwnedButton game={game} />
                                 </td>
                             </tr>
                         )    
