@@ -4,11 +4,13 @@ import currentUser from './reducers/currentUser.js';
 import games from './reducers/games.js';
 import loginForm from './reducers/loginForm.js'
 import discoverForm from './reducers/discoverForm.js'
+import playForm from './reducers/playForm.js'
 import userPlays from './reducers/userPlays.js'
 
 const reducer = combineReducers({
   currentUser,
   loginForm,
+  playForm,
   games,
   discoverForm,
   userPlays
