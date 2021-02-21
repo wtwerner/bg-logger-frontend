@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Spinner } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 const PlaysTableRow = (props) => {
     const game = props.games.filter(game => game.id === props.play.bga_id)[0];
