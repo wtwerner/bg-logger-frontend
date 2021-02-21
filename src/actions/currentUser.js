@@ -1,4 +1,5 @@
 import { fetchGamesFromUser } from './games'
+import { fetchPlaysFromUser } from './playForm'
 
 // Synchronous Action Creators
 
@@ -34,6 +35,7 @@ export const login = (credentials) => {
             } else {
               dispatch(setCurrentUser(response))
               dispatch(fetchGamesFromUser(response))
+              dispatch(fetchPlaysFromUser(response))
             }
         })
           .catch(console.log)
@@ -66,6 +68,7 @@ export const getCurrentUser = () => {
         } else {
           dispatch(setCurrentUser(response))
           dispatch(fetchGamesFromUser(response))
+          dispatch(fetchPlaysFromUser(response))
         }
       })
       .catch(console.log)

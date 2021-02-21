@@ -49,3 +49,11 @@ export const createPlay = (play) => {
             .catch(console.log)
     }
 }
+
+export const fetchPlaysFromUser = (user) => {
+    return dispatch => {
+        user.data.attributes.plays.forEach(play => {
+            dispatch(addPlay(play))
+        }
+    )}
+}
