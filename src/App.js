@@ -6,6 +6,7 @@ import OwnedContainer from './components/owned/OwnedContainer'
 import WishlistContainer from './components/wishlist/WishlistContainer'
 import PlaysContainer from './components/plays/PlaysContainer'
 import LoginContainer from './components/auth/LoginContainer'
+import PlayFormContainer from './components/plays/PlayFormContainer'
 import GlobalNavbar from './components/Navbar'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/currentUser'
@@ -28,6 +29,7 @@ class App extends React.Component {
             <Route path="/wishlist" exact component={WishlistContainer} />
             <Route path="/plays" exact component={PlaysContainer} />
             <Route path="/login" exact component={LoginContainer} />
+            <Route path="/plays/new" exact component={PlayFormContainer} />
         </Container>
       </div>
     );

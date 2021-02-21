@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updatePlayForm, createPlay } from "../../actions/playForm.js"
-import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+import { Form, Button, Row, Col } from 'react-bootstrap'
 
 const PlayForm = ({ formData, updatePlayForm, recordPlay, games }) => {
     

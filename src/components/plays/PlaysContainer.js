@@ -1,16 +1,18 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container'
+import { Link } from 'react-router-dom'
+import { Container, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import PlaysTable from './PlaysTable'
-import PlayForm from './PlayForm'
 
 class PlaysContainer extends React.Component {
     render() { 
         if (this.props.currentUser) {
             return (
                 <Container>
+                    <Link to="/plays/new">
+                        <Button>New Play</Button>
+                    </Link>
                     <PlaysTable userPlays={this.props.userPlays} />
-                    <PlayForm/>
                 </Container>
             )
         } else {
@@ -19,9 +21,8 @@ class PlaysContainer extends React.Component {
     }
 }
 
-const mapStateToProps = ({ games, currentUser, userPlays }) => {
+const mapStateToProps = ({ currentUser, userPlays }) => {
     return {
-        games,
         currentUser,
         userPlays
     }
