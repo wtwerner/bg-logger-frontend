@@ -3,10 +3,7 @@ const userPlays = (state = [], action) => {
         case 'ADD_PLAYS':
             return action.plays
         case 'ADD_PLAY':
-            return {
-                ...state,
-                userPlays: state.userPlays.concat(action.play)
-            }
+            return state.concat(action.play)
         default:
             return state
     }

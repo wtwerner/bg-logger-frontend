@@ -3,13 +3,13 @@ import { Table, Button } from 'react-bootstrap'
 
 const PlaysTable = ({userPlays, ownedGames}) => {
     return (
-        <Table striped hover className="pt-10">
+        <Table>
             <thead>
                 <tr className="text-center">
                     <th>Game</th>
                     <th>Date</th>
                     <th>Notes</th>
-                    <th>Remove Play</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,8 +20,8 @@ const PlaysTable = ({userPlays, ownedGames}) => {
                         <tr key={play.id} play_id={play.id} className="align-middle" >
                             <td className="text-center">{game.name}</td>
                             <td className="text-center">{date}</td>
-                            <td className="text-center"><Button>Details</Button></td>
-                            <td className="text-center"><Button>Remove</Button></td>
+                            <td className="text-center"><Button>Notes</Button></td>
+                            <td className="text-center"><Button>Remove Play</Button></td>
                         </tr>
                     )}
                 )}
