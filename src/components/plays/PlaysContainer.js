@@ -2,6 +2,7 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 import { connect } from 'react-redux'
 import PlaysTable from './PlaysTable'
+import PlayForm from './PlayForm'
 
 class PlaysContainer extends React.Component {
     render() { 
@@ -9,6 +10,7 @@ class PlaysContainer extends React.Component {
             return (
                 <Container>
                     <PlaysTable userPlays={this.props.userPlays} />
+                    <PlayForm/>
                 </Container>
             )
         } else {
