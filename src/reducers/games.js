@@ -26,7 +26,7 @@ const games = (state = {wishlist: [], owned: [], discover: []}, action) => {
         case 'DELETE_WISHLIST_GAME':
             return {
                 ...state,
-                wishlist: state.wishlist.filter(game => game.id !== action.game.bga_id)
+                wishlist: state.wishlist.filter(game => game.id !== action.game)
             }
         case 'DELETE_OWNED_GAME':
             return {

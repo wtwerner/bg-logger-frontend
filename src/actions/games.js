@@ -180,7 +180,7 @@ export const removeWishlistGame = (game) => {
             if (resp.error) {
                 alert(resp.error)
             } else {
-                dispatch(deleteWishlistGame(resp))
+                dispatch(deleteWishlistGame(resp.bga_id))
             }
             })
             .catch(console.log)
@@ -233,8 +233,8 @@ export const moveToOwned = (game) => {
             if (resp.error) {
                 alert(resp.error)
             } else {
-                dispatch(deleteWishlistGame(resp))
-                dispatch(createOwnedGame(game))
+                dispatch(deleteWishlistGame(game.id))
+                dispatch(addToOwned(game))
             }
             })
             .catch(console.log)
