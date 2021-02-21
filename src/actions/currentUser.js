@@ -74,6 +74,8 @@ export const signup = (credentials) => {
           alert(response.error)
         } else {
           dispatch(setCurrentUser(response))
+          dispatch(fetchGamesFromUser(response))
+          dispatch(fetchPlaysFromUser(response))
           dispatch(fetchGamesFromQuery(''))
         }
       })
