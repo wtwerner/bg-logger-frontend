@@ -12,7 +12,7 @@ class PlaysContainer extends React.Component {
                     <Link to="/plays/new">
                         <Button>New Play</Button>
                     </Link>
-                    <PlaysTable userPlays={this.props.userPlays} />
+                    <PlaysTable userPlays={this.props.userPlays} ownedGames={this.props.games.owned} />
                 </Container>
             )
         } else {
@@ -21,10 +21,11 @@ class PlaysContainer extends React.Component {
     }
 }
 
-const mapStateToProps = ({ currentUser, userPlays }) => {
+const mapStateToProps = ({ currentUser, userPlays, games }) => {
     return {
         currentUser,
-        userPlays
+        userPlays,
+        games
     }
 }
 
