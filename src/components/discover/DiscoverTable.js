@@ -2,10 +2,7 @@ import React from 'react'
 import { Table } from 'react-bootstrap'
 import DiscoverTableRow from './DiscoverTableRow'
 
-
-
-const DiscoverTable = (props) => {
-
+const DiscoverTable = ({ games }) => {
     return (
         <Table striped hover className="pt-10">
             <thead>
@@ -20,11 +17,10 @@ const DiscoverTable = (props) => {
                 </tr>
             </thead>
             <tbody>
-                <DiscoverTableRow games={props.games} />
+                <DiscoverTableRow games={games} />
             </tbody>
         </Table>
     )
-
 }
 
 export default DiscoverTable
