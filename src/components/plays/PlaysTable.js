@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap'
 
-const PlaysTable = (props) => {
+const PlaysTable = ({userPlays}) => {
     return (
         <Table>
             <thead>
@@ -13,7 +13,7 @@ const PlaysTable = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {props.userPlays.map(play => {
+                {userPlays.map(play => {
                     return (
                         <tr key={play.id} play_id={play.id} className="align-middle" >
                             <td className="text-center">Game Name</td>

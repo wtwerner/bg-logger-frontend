@@ -18,6 +18,13 @@ export const addPlay = play => {
     }
 }
 
+export const addPlays = plays => {
+    return {
+      type: "ADD_PLAYS",
+      plays
+    }
+}
+
 export const createPlay = (play) => {
     return dispatch => {
         console.log("Creating play with game " + play.game)
@@ -52,8 +59,6 @@ export const createPlay = (play) => {
 
 export const fetchPlaysFromUser = (user) => {
     return dispatch => {
-        user.data.attributes.plays.forEach(play => {
-            dispatch(addPlay(play))
-        }
-    )}
+        dispatch(addPlays(user.data.attributes.plays))
+    }
 }
