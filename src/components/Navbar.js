@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Nav, NavDropdown, Form, Button } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown, Form, Button, ButtonGroup } from 'react-bootstrap'
 import { logout } from "../actions/currentUser.js"
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -7,7 +7,13 @@ import { Link } from 'react-router-dom'
 const GlobalNavbar = ({ logout, currentUser }) => {
     const authButton = () => {
         if (currentUser === null) {
-            return <Button variant="secondary" as={Link} to="/login">Login</Button>
+            return (
+                <ButtonGroup>
+                    <Button variant="secondary" as={Link} to="/login">Login</Button>
+                    <Button variant="secondary" as={Link} to="/signup">Signup</Button>
+                </ButtonGroup>
+            )
+                
         } else {
             return <Button variant="secondary" onClick={ logout }>Logout</Button>
         }
