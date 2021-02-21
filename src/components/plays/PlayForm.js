@@ -2,8 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { updatePlayForm, createPlay } from "../../actions/playForm.js"
 import { Form, Button, Row, Col } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
 
-const PlayForm = ({ formData, updatePlayForm, recordPlay, games }) => {
+const PlayForm = ({ formData, updatePlayForm, createPlay, games }) => {
+
+    const history = useHistory();
     
     const handleOnChange = event => {
         const { name, value } = event.target
@@ -16,7 +19,8 @@ const PlayForm = ({ formData, updatePlayForm, recordPlay, games }) => {
 
     const handleOnSubmit = event => {
         event.preventDefault()
-        recordPlay(formData)
+        createPlay(formData)
+        history.push('/plays')
     }
 
     return (
@@ -24,8 +28,9 @@ const PlayForm = ({ formData, updatePlayForm, recordPlay, games }) => {
         <Form onSubmit={handleOnSubmit}>
             <Row>
                 <Col>
-                        <Form.Label>Select Game:</Form.Label>
+                        <Form.Label>Game:</Form.Label>
                         <Form.Control as="select" name="game" onChange={handleOnChange}>
+                            <option>Select a game</option>
                             {games.map(game => {
                                 return <option key={game.id} value={game.id}>{game.name}</option>
                             })}
@@ -56,7 +61,7 @@ const PlayForm = ({ formData, updatePlayForm, recordPlay, games }) => {
             <Row>
                 <Col>
                     <Form.Label>Notes:</Form.Label>
-                    <Form.Control as="textarea" rows={3} name="players" onChange={handleOnChange} />
+                    <Form.Control as="textarea" rows={3} name="notes" onChange={handleOnChange} />
                 </Col>
             </Row>
             <br/>

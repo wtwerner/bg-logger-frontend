@@ -22,7 +22,7 @@ export const createPlay = (play) => {
     return dispatch => {
         console.log("Creating play with game " + play.game)
         const sendablePlayData = {
-            game_id: play.game.id,
+            game_id: play.game,
             date: play.date,
             players: play.players,
             duration: play.duration,
