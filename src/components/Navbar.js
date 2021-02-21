@@ -14,7 +14,7 @@ const GlobalNavbar = ({ logout, currentUser }) => {
     }
 
     return (
-        <Navbar collapseOnSelect expand="sm" bg="light" variant="light" >
+        <Navbar collapseOnSelect expand="sm" bg="light" variant="light" className="mb-3">
             <Navbar.Brand as={Link} to="/" className="mx-3">BG Logger</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
