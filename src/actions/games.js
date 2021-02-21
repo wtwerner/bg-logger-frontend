@@ -53,6 +53,12 @@ export const searchApiGames = games => {
     }
 }
 
+export const resetGames = () => {
+    return {
+        type: 'RESET_GAMES'
+    }
+}
+
 // Fetch from BGA API
 
 export const fetchGamesFromQuery = (query) => {

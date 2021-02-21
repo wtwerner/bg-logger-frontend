@@ -1,4 +1,10 @@
-const games = (state = {wishlist: [], owned: [], discover: []}, action) => {
+const initialState = {
+    wishlist: [], 
+    owned: [], 
+    discover: []
+}
+
+const games = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_OWNED_GAMES':
             return {
@@ -38,6 +44,8 @@ const games = (state = {wishlist: [], owned: [], discover: []}, action) => {
                 ...state,
                 discover: action.games.games
             }
+        case 'RESET_GAMES':
+            return initialState
         default:
             return state
     }

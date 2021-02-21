@@ -1,5 +1,6 @@
 import { fetchGamesFromQuery, fetchGamesFromUser } from './games'
 import { fetchPlaysFromUser } from './playForm'
+import { resetGames } from './games'
 
 // Synchronous Action Creators
 
@@ -50,6 +51,7 @@ export const logout = () => {
       method: 'DELETE'
     })
       .then(dispatch(clearCurrentUser()))
+      .then(dispatch(resetGames()))
   }
 }
 
