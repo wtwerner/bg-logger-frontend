@@ -8,6 +8,7 @@ import PlaysContainer from './components/plays/PlaysContainer'
 import LoginContainer from './components/auth/LoginContainer'
 import PlayFormContainer from './components/plays/PlayFormContainer'
 import GlobalNavbar from './components/Navbar'
+import SignupContainer from './components/auth/SignupContainer.js'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/currentUser'
 import Container from 'react-bootstrap/Container'
@@ -24,6 +25,7 @@ class App extends React.Component {
         <GlobalNavbar />
         <Container>
             <Route path="/" exact component={Main} />
+            <Route path='/signup' exact render={SignupContainer}/>
             <Route path="/discover" exact component={DiscoverContainer} />
             <Route path="/owned" exact component={OwnedContainer} />
             <Route path="/wishlist" exact component={WishlistContainer} />
