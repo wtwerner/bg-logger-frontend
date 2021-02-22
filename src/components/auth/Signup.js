@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateSignupForm } from "../../actions/signupForm"
+import { updateSignupForm, resetSignupForm } from "../../actions/signupForm"
 import { signup } from "../../actions/currentUser.js"
 import { Form, Button } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
 
 
-const Signup = ({ signupFormData, updateSignupForm, signup }) => {
+const Signup = ({ signupFormData, updateSignupForm, resetSignupForm, signup }) => {
+
+  const history = useHistory()
 
   const handleOnChange = event => {
     const { name, value } = event.target
@@ -19,13 +22,15 @@ const Signup = ({ signupFormData, updateSignupForm, signup }) => {
   const handleOnSubmit = event => {
     event.preventDefault()
     signup(signupFormData)
+    resetSignupForm()
+    history.push('/')
   }
 
   return (
     <Form style={{width: "300px"}} onSubmit={handleOnSubmit}>
       <Form.Control placeholder="name" value={signupFormData.name} name="name" type="text" onChange={handleOnChange} />
-      <Form.Control placeholder="username" value={signupFormData.email} name="email" type="text" onChange={handleOnChange} />
-      <Form.Control placeholder="password" value={signupFormData.password} name="password" type="text" onChange={handleOnChange} />
+      <Form.Control placeholder="email" value={signupFormData.email} name="email" type="email" onChange={handleOnChange} />
+      <Form.Control placeholder="password" value={signupFormData.password} name="password" type="password" onChange={handleOnChange} />
       <Button style={{width: "300px"}} type="submit" value="Sign Up">Sign Up</Button>
     </Form>
   )
@@ -37,4 +42,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { updateSignupForm, signup } )(Signup)
+export default connect(mapStateToProps, { updateSignupForm, resetSignupForm, signup } )(Signup)
