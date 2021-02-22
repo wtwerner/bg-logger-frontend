@@ -2,9 +2,17 @@ import React from 'react'
 import { Navbar, Nav, NavDropdown, Form, Button, ButtonGroup } from 'react-bootstrap'
 import { logout } from "../actions/currentUser.js"
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 const GlobalNavbar = ({ logout, currentUser }) => {
+
+    const history = useHistory()
+
+    const handleLogoutClick = () => {
+        logout()
+        history.push('/')
+    }
+
     const authButton = () => {
         if (currentUser === null) {
             return (
@@ -15,7 +23,7 @@ const GlobalNavbar = ({ logout, currentUser }) => {
             )
                 
         } else {
-            return <Button variant="secondary" onClick={ logout }>Logout</Button>
+            return <Button variant="secondary" onClick={handleLogoutClick}>Logout</Button>
         }
     }
 
