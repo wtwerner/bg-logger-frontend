@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { updateLoginForm } from "../../actions/loginForm.js"
 import { login } from "../../actions/currentUser.js"
+import { Form, Button } from 'react-bootstrap'
 
 const Login = ({ loginFormData, updateLoginForm, login }) => {
     
@@ -20,11 +21,13 @@ const Login = ({ loginFormData, updateLoginForm, login }) => {
     }
 
     return (
-        <form onSubmit={handleOnSubmit}>
-            <input value={loginFormData.email} name="email" type="text" onChange={handleOnChange} />
-            <input value={loginFormData.password} name="password" type="text" onChange={handleOnChange} />
-            <input value="Log In" type="submit" />
-        </form>
+        <div style={{width: "300px"}}>
+            <Form onSubmit={handleOnSubmit}>
+                <Form.Control value={loginFormData.email} placeholder="email" name="email" type="text" onChange={handleOnChange} />
+                <Form.Control value={loginFormData.password} placeholder="password" name="password" type="text" onChange={handleOnChange} />
+                <Button style={{width: "300px"}} value="Log In" type="submit">Login</Button>
+            </Form>
+        </div>
     )
 }
 
