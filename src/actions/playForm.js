@@ -56,7 +56,7 @@ export const createPlay = (play) => {
             if (resp.error) {
                 alert(resp.error)
             } else {
-                dispatch(addPlay(play))
+                dispatch(addPlay(resp))
             }
             })
             .catch(console.log)
