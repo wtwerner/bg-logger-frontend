@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateLoginForm } from "../../actions/loginForm.js"
+import { updateLoginForm, resetLoginForm } from "../../actions/loginForm.js"
 import { login } from "../../actions/currentUser.js"
 import { Form, Button } from 'react-bootstrap'
+import { useHistory} from 'react-router-dom'
 
-const Login = ({ loginFormData, updateLoginForm, login }) => {
+const Login = ({ loginFormData, updateLoginForm, resetLoginForm, login }) => {
+
+    const history = useHistory()
     
     const handleOnChange = event => {
         const { name, value } = event.target
@@ -18,6 +21,8 @@ const Login = ({ loginFormData, updateLoginForm, login }) => {
     const handleOnSubmit = event => {
         event.preventDefault()
         login(loginFormData)
+        resetLoginForm()
+        history.push('/')
     }
 
     return (
@@ -37,4 +42,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { updateLoginForm, login } )(Login)
+export default connect(mapStateToProps, { updateLoginForm, resetLoginForm, login } )(Login)
