@@ -6,13 +6,17 @@ import { connect } from 'react-redux'
 
 class DiscoverContainer extends React.Component {
     render() {
-        return (
-            <Container className="d-grid gap-3">
-                <div/>
-                <DiscoverForm />
-                <DiscoverTable games={this.props.games.discover} />
-            </Container>
-        )
+        if (this.props.currentUser) {
+            return (
+                <Container className="d-grid gap-3">
+                    <div/>
+                    <DiscoverForm />
+                    <DiscoverTable games={this.props.games.discover} />
+                </Container>
+            )
+        } else {
+            return <p>Sign up or sign in to see this page.</p>
+        }
     }
 }
 
