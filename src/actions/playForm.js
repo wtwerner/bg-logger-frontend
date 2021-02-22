@@ -18,6 +18,13 @@ export const addPlay = play => {
     }
 }
 
+export const deletePlay = play => {
+    return {
+      type: "DELETE_PLAY",
+      play
+    }
+}
+
 export const addPlays = plays => {
     return {
       type: "ADD_PLAYS",
@@ -50,6 +57,32 @@ export const createPlay = (play) => {
                 alert(resp.error)
             } else {
                 dispatch(addPlay(play))
+            }
+            })
+            .catch(console.log)
+    }
+}
+
+export const removePlay = (play) => {
+    return dispatch => {
+        console.log("Removing play with game id " + play.bga_id)
+        const sendableGameData = {
+            id: play.id
+        }
+        return fetch(`http://localhost:3001/api/v1/plays/${play.id}`, {
+            credentials: "include",
+            method: "DELETE",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(sendableGameData)
+        })
+            .then(r => r.json())
+            .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                dispatch(deletePlay(resp))
             }
             })
             .catch(console.log)

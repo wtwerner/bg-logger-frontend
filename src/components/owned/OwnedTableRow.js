@@ -3,6 +3,7 @@ import OwnedButton from '../buttons/OwnedButton'
 import { Button } from 'react-bootstrap'
 
 import '../../photo_style.css'
+import PlayButton from '../buttons/PlayButton'
 
 const OwnedTableRow = (props) => {
     return (
@@ -13,7 +14,7 @@ const OwnedTableRow = (props) => {
                     <td className="text-center">{game.name}</td>
                     <td className="text-center">{game.rank}</td>
                     <td className="text-center">{game.min_players}-{game.max_players}</td>
-                    <td className="text-center"><Button>Add a Play</Button></td>
+                    <td className="text-center"><PlayButton /></td>
                     <td className="text-center"><Button>View Plays</Button></td>
                     <td className="text-center"><OwnedButton game={game} /></td>
                 </tr>

@@ -4,6 +4,8 @@ const userPlays = (state = [], action) => {
             return action.plays
         case 'ADD_PLAY':
             return state.concat(action.play)
+        case 'DELETE_PLAY':
+            return state.filter(play => play.id !== action.play.id)
         default:
             return state
     }

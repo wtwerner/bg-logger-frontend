@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
+import PlayButton from '../buttons/PlayButton';
 
 const PlaysTableRow = (props) => {
     const game = props.games.filter(game => game.id === props.play.bga_id)[0];
@@ -17,7 +18,7 @@ const PlaysTableRow = (props) => {
                 <td className="text-center">{game.name}</td>
                 <td className="text-center">{date}</td>
                 <td className="text-center"><Button>Notes</Button></td>
-                <td className="text-center"><Button>Remove Play</Button></td>
+                <td className="text-center"><PlayButton play={props.play} game={game} /></td>
             </tr>
         )
     }
