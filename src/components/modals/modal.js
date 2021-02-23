@@ -1,7 +1,6 @@
 import React from 'react'
-import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/button'
+import './modal.css'
 
 export default class GameModal extends React.Component {
 
@@ -24,16 +23,19 @@ export default class GameModal extends React.Component {
         bgg_id: null   
     }   
 
-    handleChange = (e) => this.setState({name: e.target.value})
-
     render(){
         return(
-            <Modal show={this.props.isOpen} onHide={this.props.closeModal}>
+            <Modal 
+                show={this.props.isOpen} 
+                onHide={this.props.closeModal} 
+                dialogClassName="modal-90w"
+                aria-labelledby="example-custom-modal-styling-title"
+            >
                 <Modal.Header closeButton>
                     <Modal.Title>{this.props.game.name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    BODY
+                    <p>{this.props.game.description_preview}</p>
                 </Modal.Body>
                 <Modal.Footer>
 
