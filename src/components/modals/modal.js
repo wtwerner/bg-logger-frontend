@@ -20,10 +20,10 @@ export default class GameModal extends React.Component {
                 <Modal.Body>
                     <Container>
                         <Row>
-                            <Col xs={6} md={4}>
+                            <Col xs={4} md={2}>
                                 <img src={this.props.game.images.small} className="photo" alt="game" />
                             </Col>
-                            <Col xs={6} md={4}>
+                            <Col xs={4} md={2}>
                                 Gameplay info
                             </Col>
                             <Col xs={6} md={4}>
