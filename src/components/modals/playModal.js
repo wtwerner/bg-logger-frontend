@@ -22,16 +22,19 @@ export default class PlayModal extends React.Component {
                                 <img src={this.props.game.images.small} className="photo" alt="game" />
                             </Col>
                             <Col xs={4} md={2}>
-                                DATE
+                                Date: 
+                                <br/>
+                                {this.props.play.date.substring(0,10)}
                             </Col>
                             <Col xs={6} md={4}>
-                                PLAYERS
+                                Players: 
+                                <br/>
+                                {this.props.play.players}
                             </Col>
-                        </Row>
-                        <br/>
-                        <Row>
                             <Col>
-                                NOTES
+                                Notes:
+                                <br/>
+                                {this.props.play.notes}
                             </Col>
                         </Row>
                     </Container>

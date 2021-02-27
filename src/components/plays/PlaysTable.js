@@ -7,15 +7,18 @@ class PlaysTable extends React.Component {
 
     state = {
         isOpen: false,
-        modalGame: null
+        modalGame: null,
+        modalPlay: null
     }
     
-    openModal = (game) => {
+    openModal = (game, play) => {
         this.setState({ 
             isOpen: true,
-            modalGame: game
+            modalGame: game,
+            modalPlay: play
         });
     }
+
     closeModal = () => this.setState({ isOpen: false });
     
     render() {
@@ -43,6 +46,7 @@ class PlaysTable extends React.Component {
                         isOpen={this.state.isOpen} 
                         handleSubmit={this.handleSubmit}
                         game={this.state.modalGame}
+                        play={this.state.modalPlay}
                         /> 
                     : null 
                 }
