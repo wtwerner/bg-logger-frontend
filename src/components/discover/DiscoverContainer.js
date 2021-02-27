@@ -20,9 +20,10 @@ class DiscoverContainer extends React.Component {
     }
 }
 
-const mapStateToProps = ({ games }) => {
+const mapStateToProps = ({ games, currentUser }) => {
     return {
-        games
+        games,
+        currentUser
     }
 }
 
