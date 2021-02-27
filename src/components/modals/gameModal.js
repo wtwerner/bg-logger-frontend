@@ -6,6 +6,21 @@ import PlayButton from '../buttons/PlayButton'
 import OwnedButton from '../buttons/OwnedButton'
 
 export default class GameModal extends React.Component {
+
+    starRating = (rating) => {
+        if (0 < rating && rating< 1.5) {
+            return <span>⭐</span>
+        } else if (1.5 < rating && rating < 2.5) {
+            return <span>⭐⭐</span>
+        } else if (2.5 < rating && rating < 3.5) {
+            return <span>⭐⭐⭐</span>
+        } else if (3.5 < rating && rating < 4.5) {
+            return <span>⭐⭐⭐⭐</span>
+        } else if (4.5 < rating && rating < 5) {
+            return <span>⭐⭐⭐⭐⭐</span>
+        }
+    }
+
     render(){
         return(
             <Modal 
@@ -23,11 +38,16 @@ export default class GameModal extends React.Component {
                             <Col xs={4} md={2}>
                                 <img src={this.props.game.images.small} className="photo" alt="game" />
                             </Col>
-                            <Col xs={4} md={2}>
-                                Gameplay info
-                            </Col>
                             <Col xs={6} md={4}>
-                                Game stats
+                                Rank: {this.props.game.rank}
+                                <br/>
+                                Players: {this.props.game.min_players}-{this.props.game.max_players}
+                                <br/>
+                                Play Time: {this.props.game.min_playtime}-{this.props.game.max_playtime} minutes
+                                <br/>
+                                Rating: {this.starRating(this.props.game.average_user_rating)} ({this.props.game.num_user_ratings} reviews)
+                                <br/>
+                                <a target="_blank" rel="noreferrer" href={`https://boardgamegeek.com/boardgame/${this.props.game.bgg_id}`}>View on BoardGameGeek</a>
                             </Col>
                         </Row>
                         <br/>
