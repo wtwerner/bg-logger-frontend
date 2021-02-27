@@ -1,6 +1,5 @@
 import React from 'react'
 import OwnedButton from '../buttons/OwnedButton'
-import { Button } from 'react-bootstrap'
 import InfoButton from '../buttons/InfoButton'
 
 import '../../photo_style.css'
@@ -15,7 +14,6 @@ const OwnedTableRow = (props) => {
             <td className="text-center">{props.game.min_players}-{props.game.max_players}</td>
             <td className="text-center"><InfoButton game={props.game} openModal={props.openModal} /></td>
             <td className="text-center"><PlayButton /></td>
-            <td className="text-center"><Button>View Plays</Button></td>
             <td className="text-center"><OwnedButton game={props.game} /></td>
         </tr>
     )
