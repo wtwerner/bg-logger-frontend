@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
 import PlayButton from '../buttons/PlayButton';
+import InfoButton from '../buttons/InfoButton' 
 
 const PlaysTableRow = (props) => {
     const game = props.games.filter(game => game.id === props.play.bga_id)[0];
@@ -17,7 +17,7 @@ const PlaysTableRow = (props) => {
             <tr key={props.play.id} play_id={props.play.id} game={game} className="align-middle" >
                 <td className="text-center">{game.name}</td>
                 <td className="text-center">{date}</td>
-                <td className="text-center"><Button>Notes</Button></td>
+                <td className="text-center"><InfoButton game={game} openModal={props.openModal} /></td>
                 <td className="text-center"><PlayButton play={props.play} game={game} /></td>
             </tr>
         )

@@ -1,25 +1,56 @@
 import React from 'react'
-import { Table, Button } from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
+import PlayModal from '../modals/playModal'
 import PlaysTableRow from './PlaysTableRow'
 
-const PlaysTable = ({userPlays, ownedGames}) => {
-    return (
-        <Table>
-            <thead>
-                <tr className="text-center">
-                    <th>Game</th>
-                    <th>Date</th>
-                    <th>Notes</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
-            <tbody>
-                {userPlays.map(play => {
-                    return <PlaysTableRow key={play.id} games={ownedGames} play={play} />
-                })}
-            </tbody>
-        </Table>
-    )
+class PlaysTable extends React.Component {
+
+    state = {
+        isOpen: false,
+        modalGame: null
+    }
+    
+    openModal = (game) => {
+        this.setState({ 
+            isOpen: true,
+            modalGame: game
+        });
+    }
+    closeModal = () => this.setState({ isOpen: false });
+    
+    render() {
+        return (
+            <>
+                <Table>
+                    <thead>
+                        <tr className="text-center">
+                            <th>Game</th>
+                            <th>Date</th>
+                            <th>Notes</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.userPlays.map(play => {
+                            return <PlaysTableRow key={play.id} openModal={this.openModal} games={this.props.ownedGames} play={play} />
+                        })}
+                    </tbody>
+                </Table>
+
+                {this.state.isOpen 
+                    ? <PlayModal 
+                        closeModal={this.closeModal} 
+                        isOpen={this.state.isOpen} 
+                        handleSubmit={this.handleSubmit}
+                        game={this.state.modalGame}
+                        /> 
+                    : null 
+                }
+
+            </>
+        )
+    }
+    
 }
 
 export default PlaysTable
