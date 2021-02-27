@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import OwnedTableRow from './OwnedTableRow'
-import GameModal from '../modals/modal'
+import GameModal from '../modals/gameModal'
 
 class OwnedTable extends React.Component {
     state = {

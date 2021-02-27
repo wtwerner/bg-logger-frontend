@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import WishlistTableRow from './WishlistTableRow'
-import GameModal from '../modals/modal'
+import GameModal from '../modals/gameModal'
 
 class WishlistTable extends React.Component {
 
