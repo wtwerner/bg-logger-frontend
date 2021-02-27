@@ -29,7 +29,7 @@ const Login = ({ loginFormData, updateLoginForm, resetLoginForm, login }) => {
         <div style={{width: "300px"}}>
             <Form onSubmit={handleOnSubmit}>
                 <Form.Control value={loginFormData.email} placeholder="email" name="email" type="text" onChange={handleOnChange} />
-                <Form.Control value={loginFormData.password} placeholder="password" name="password" type="text" onChange={handleOnChange} />
+                <Form.Control value={loginFormData.password} placeholder="password" name="password" type="password" onChange={handleOnChange} />
                 <Button style={{width: "300px"}} value="Log In" type="submit">Login</Button>
             </Form>
         </div>
