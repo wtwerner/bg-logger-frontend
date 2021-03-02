@@ -116,7 +116,7 @@ export const createWishlistGame = (game) => {
             wishlist: true,
             owned: false
         }
-        return fetch("https://bg-logger-backend.herokuapp.com/api/v1/games", {
+        return fetch("http://localhost:3001/api/v1/games", {
             credentials: "include",
             method: "POST",
             headers: {
@@ -144,7 +144,7 @@ export const createOwnedGame = (game) => {
             wishlist: false,
             owned: true
         }
-        return fetch("https://bg-logger-backend.herokuapp.com/api/v1/games", {
+        return fetch("http://localhost:3001/api/v1/games", {
             credentials: "include",
             method: "POST",
             headers: {
@@ -173,7 +173,7 @@ export const removeWishlistGame = (game) => {
         const sendableGameData = {
             bga_id: game.id
         }
-        return fetch(`https://bg-logger-backend.herokuapp.com/api/v1/games/${game.id}`, {
+        return fetch(`http://localhost:3001/api/v1/games/${game.id}`, {
             credentials: "include",
             method: "DELETE",
             headers: {
@@ -199,7 +199,7 @@ export const removeOwnedGame = (game) => {
         const sendableGameData = {
             bga_id: game.id
         }
-        return fetch(`https://bg-logger-backend.herokuapp.com/api/v1/games/${game.id}`, {
+        return fetch(`http://localhost:3001/api/v1/games/${game.id}`, {
             credentials: "include",
             method: "DELETE",
             headers: {
@@ -226,7 +226,7 @@ export const moveToOwned = (game) => {
             owned: true,
             wishlist: false
         }
-        return fetch(`https://bg-logger-backend.herokuapp.com/api/v1/games/${game.id}`, {
+        return fetch(`http://localhost:3001/api/v1/games/${game.id}`, {
             credentials: "include",
             method: "PATCH",
             headers: {
