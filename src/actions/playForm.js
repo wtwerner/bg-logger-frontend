@@ -43,7 +43,7 @@ export const createPlay = (play) => {
             winner: play.winner,
             notes: play.notes
         }
-        return fetch("https://cors-anywhere.herokuapp.com/https://bg-logger-backend.herokuapp.com/api/v1/plays", {
+        return fetch("https://bg-logger-backend.herokuapp.com/api/v1/plays", {
             credentials: "include",
             method: "POST",
             headers: {
@@ -69,7 +69,7 @@ export const removePlay = (play) => {
         const sendableGameData = {
             id: play.id
         }
-        return fetch(`https://cors-anywhere.herokuapp.com/https://bg-logger-backend.herokuapp.com/api/v1/plays/${play.id}`, {
+        return fetch(`https://bg-logger-backend.herokuapp.com/api/v1/plays/${play.id}`, {
             credentials: "include",
             method: "DELETE",
             headers: {
