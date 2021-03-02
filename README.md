@@ -6,7 +6,7 @@ BG Logger has a React frontend and Rails backend and lets users search for boad 
 
 [BG Logger Backend Repo](https://github.com/wtwerner/bg-logger-backend)
 
-[Watch this video to understand the basic functionality](LINK)
+[Watch this video to understand the basic functionality](https://youtu.be/8aVrW1p2VBI)
 
 ## Built With
 
