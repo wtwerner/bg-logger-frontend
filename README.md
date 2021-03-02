@@ -32,8 +32,8 @@ For interactive console
 
 From frontend directory
 
-    $ npm install
-    $ npm start
+    $ yarn
+    $ yarn start
 
 ## Contributing
 
