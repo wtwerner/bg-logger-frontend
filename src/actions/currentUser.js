@@ -21,7 +21,7 @@ export const clearCurrentUser = () => {
 
 export const login = (credentials) => {
     return dispatch => {
-        return fetch("https://bg-logger-backend.herokuapp.com/api/v1/login", {
+        return fetch("https://cors-anywhere.herokuapp.com/https://bg-logger-backend.herokuapp.com/api/v1/login", {
             credentials: 'include',
             method: "POST",
             headers: {
@@ -46,7 +46,7 @@ export const login = (credentials) => {
 
 export const logout = () => {
   return dispatch => {
-    return fetch('https://bg-logger-backend.herokuapp.com/api/v1/logout', {
+    return fetch('https://cors-anywhere.herokuapp.com/https://bg-logger-backend.herokuapp.com/api/v1/logout', {
       credentials: 'include',
       method: 'DELETE'
     })
@@ -60,7 +60,7 @@ export const signup = (credentials) => {
     const userInfo = {
       user: credentials
     }
-    return fetch("https://bg-logger-backend.herokuapp.com/api/v1/signup", {
+    return fetch("https://cors-anywhere.herokuapp.com/https://bg-logger-backend.herokuapp.com/api/v1/signup", {
       credentials: "include",
       method: "POST",
       headers: {
@@ -85,7 +85,7 @@ export const signup = (credentials) => {
 
 export const getCurrentUser = () => {
   return dispatch => {
-    return fetch("https://bg-logger-backend.herokuapp.com/api/v1/get_current_user", {
+    return fetch("https://cors-anywhere.herokuapp.com/https://bg-logger-backend.herokuapp.com/api/v1/get_current_user", {
       credentials: 'include',
       method: "GET",
       headers: {
