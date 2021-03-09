@@ -6,8 +6,8 @@ import '../../photo_style.css'
 const RecentGameCard = (props) => {
 
     return (
-        <Card style={{ width: '18rem' }} >
-            <Card.Img variant="top" src={props.game.images.small} className="photo" />
+        <Card style={{ width: '200px' }} >
+            <Card.Img variant="top" src={props.game.images.small} className="photo" style={{padding: "15px"}} />
             <Card.Body>
                 <Card.Title>{props.game.name}</Card.Title>
                 <PlayButton />
