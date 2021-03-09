@@ -8,7 +8,7 @@ const Main = ({recentGames, currentUser}) => {
     return (
         <>
             <Container style={{width: "750px", padding: "30px", textAlign: "center"}}>
-                <Jumbotron className="border" style={{padding: "25px"}}>
+                <Jumbotron className="border rounded" style={{padding: "25px"}}>
                     {currentUser
                         ? <h1>Welcome to BG Logger, {currentUser.data.attributes.name}</h1>
                         : <h1>Welcome to BG Logger</h1>
