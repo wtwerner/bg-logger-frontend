@@ -9,9 +9,15 @@ const RecentGameCard = (props) => {
         <Card style={{ width: '200px' }} >
             <Card.Img variant="top" src={props.game.images.small} className="photo" style={{padding: "15px"}} />
             <Card.Body>
-                <Card.Title>{props.game.name}</Card.Title>
-                <PlayButton />
+                <div className="text-center">
+                    <Card.Title>{props.game.name}</Card.Title>
+                </div>
             </Card.Body>
+            <Card.Footer>
+                <div className="text-center">
+                    <PlayButton className="mx-auto" />
+                </div>
+            </Card.Footer>
         </Card>
     ) 
 }
