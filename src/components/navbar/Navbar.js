@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, Nav, NavDropdown, Form, Button, ButtonGroup } from 'react-bootstrap'
-import { logout } from "../actions/currentUser.js"
+import { logout } from "../../actions/currentUser.js"
 import { connect } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 
