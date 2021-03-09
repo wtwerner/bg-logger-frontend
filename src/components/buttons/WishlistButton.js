@@ -40,4 +40,4 @@ const mapStateToProps = ({ games }) => {
     }
 }
 
-export default connect(mapStateToProps, { createWishlistGame, removeWishlistGame } )(WishlistButton)
+export default connect(mapStateToProps, { createWishlistGame, removeWishlistGame })(WishlistButton)

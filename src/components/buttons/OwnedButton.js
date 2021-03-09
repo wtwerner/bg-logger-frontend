@@ -42,4 +42,4 @@ const mapStateToProps = ({ games }) => {
     }
 }
 
-export default connect(mapStateToProps, { createOwnedGame, removeOwnedGame } )(OwnedButton)
+export default connect(mapStateToProps, { createOwnedGame, removeOwnedGame })(OwnedButton)

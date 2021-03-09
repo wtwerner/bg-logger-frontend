@@ -42,4 +42,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { updateLoginForm, resetLoginForm, login } )(Login)
+export default connect(mapStateToProps, { updateLoginForm, resetLoginForm, login })(Login)

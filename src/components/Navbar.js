@@ -52,4 +52,4 @@ function mapStateToProps(state) {
     return { currentUser: state.currentUser }
   }
 
-export default connect(mapStateToProps, { logout } )(GlobalNavbar)
+export default connect(mapStateToProps, { logout })(GlobalNavbar)

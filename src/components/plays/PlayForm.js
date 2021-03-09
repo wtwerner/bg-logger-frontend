@@ -82,4 +82,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { updatePlayForm, createPlay } )(PlayForm)
+export default connect(mapStateToProps, { updatePlayForm, createPlay })(PlayForm)

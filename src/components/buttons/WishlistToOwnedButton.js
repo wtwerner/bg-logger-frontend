@@ -15,4 +15,4 @@ const WishlistToOwnedButton = (props) => {
 
 }
 
-export default connect(null , { moveToOwned } )(WishlistToOwnedButton)
+export default connect(null , { moveToOwned })(WishlistToOwnedButton)

@@ -14,20 +14,17 @@ const games = (state = initialState, action) => {
         case 'ADD_WISHLIST_GAMES':
             return {
                 ...state,
-                wishlist: action.games.games
-                
+                wishlist: action.games.games 
             }
         case 'ADD_TO_WISHLIST':
             return {
                 ...state,
-                wishlist: state.wishlist.concat(action.game)
-                
+                wishlist: state.wishlist.concat(action.game)   
             }
         case 'ADD_TO_OWNED':
             return {
                 ...state,
                 owned: state.owned.concat(action.game)
-                
             }
         case 'DELETE_WISHLIST_GAME':
             return {

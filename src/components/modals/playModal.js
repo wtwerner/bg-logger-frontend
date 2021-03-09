@@ -39,9 +39,6 @@ export default class PlayModal extends React.Component {
                         </Row>
                     </Container>
                 </Modal.Body>
-                <Modal.Footer>
-
-                </Modal.Footer>
             </Modal>
         )
     }

@@ -34,4 +34,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { updateDiscoverForm, fetchGamesFromQuery } )(DiscoverForm)
+export default connect(mapStateToProps, { updateDiscoverForm, fetchGamesFromQuery })(DiscoverForm)

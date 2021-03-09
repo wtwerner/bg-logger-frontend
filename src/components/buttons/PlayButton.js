@@ -31,4 +31,4 @@ const mapStateToProps = ({ games }) => {
     }
 }
 
-export default connect(mapStateToProps, { createPlay, removePlay } )(PlaysButton)
+export default connect(mapStateToProps, { createPlay, removePlay })(PlaysButton)
