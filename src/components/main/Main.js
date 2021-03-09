@@ -3,7 +3,7 @@ import { Jumbotron, Container} from 'react-bootstrap'
 import RecentGames from './RecentGames'
 import { connect } from 'react-redux'
 
-const Main = ({recentGames, currentUser}) => {
+const Main = ({recentGames, popularGames, currentUser}) => {
 
     return (
         <>
@@ -19,7 +19,7 @@ const Main = ({recentGames, currentUser}) => {
                 </Jumbotron>            
             </Container>
             <Container>
-                {(recentGames.length > 2) ? <RecentGames games={recentGames} /> : null}
+                {(recentGames.length > 2) ? <RecentGames games={recentGames} /> : <RecentGames games={popularGames} />}
             </Container>
         </>
     )
@@ -28,6 +28,7 @@ const Main = ({recentGames, currentUser}) => {
 const mapStateToProps = ({ games, currentUser }) => {
     return {
         recentGames: games.recent,
+        popularGames: games.discover.slice(0,3),
         currentUser
     }
 }
