@@ -8,7 +8,9 @@ const WishlistButton = (props) => {
 
     const handleWishlistClick = event => {
         if (event.target.getAttribute('wishlisted') === 'true' ) {
-            props.removeWishlistGame(props.game)
+            if (window.confirm('Are you sure you want to do this? This action cannot be undone.')) {
+                props.removeWishlistGame(props.game)
+            }
         } else {
             props.createWishlistGame(props.game)
         }

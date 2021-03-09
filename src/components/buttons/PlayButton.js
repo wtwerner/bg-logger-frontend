@@ -10,7 +10,9 @@ const PlaysButton = (props) => {
 
     const handlePlayClick = event => {
         if (event.target.parentElement.parentElement.getAttribute('play_id')) {
-            props.removePlay(props.play)
+            if (window.confirm('Are you sure you want to do this? This action cannot be undone.')) {
+                props.removePlay(props.play)
+            }
         } else {
             if (props.game) {
                 props.setPlayGame(props.game.id)

@@ -8,11 +8,11 @@ const OwnedButton = (props) => {
 
     const handleOwnedClick = event => {
         if (event.target.getAttribute('owned') === 'true' ) {
-            props.removeOwnedGame(props.game)
-            console.log(props)
+            if (window.confirm('Are you sure you want to do this? All associated plays will be deleted as well. This action cannot be undone.')) {
+                props.removeOwnedGame(props.game)
+            }
         } else {
             props.createOwnedGame(props.game)
-            console.log(props)
         }
     }
 
