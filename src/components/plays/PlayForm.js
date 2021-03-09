@@ -29,7 +29,7 @@ const PlayForm = ({ formData, updatePlayForm, createPlay, games }) => {
             <Row>
                 <Col>
                         <Form.Label>Game:</Form.Label>
-                        <Form.Control as="select" name="game" onChange={handleOnChange}>
+                        <Form.Control as="select" name="game" value={formData.game} onChange={handleOnChange}>
                             <option>Select a game</option>
                             {games.map(game => {
                                 return <option key={game.id} value={game.id}>{game.name}</option>

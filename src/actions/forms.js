@@ -36,6 +36,13 @@ export const updatePlayForm = (formData) => {
         formData
     }
 }
+
+export const setPlayGame = (game) => {
+    return {
+        type: "SET_PLAY_FORM_GAME",
+        game
+    }
+}
   
 export const resetPlayForm = () => {
     return {

@@ -13,7 +13,7 @@ const OwnedTableRow = (props) => {
             <td className="text-center">{props.game.rank}</td>
             <td className="text-center">{props.game.min_players}-{props.game.max_players}</td>
             <td className="text-center"><InfoButton game={props.game} openModal={props.openModal} /></td>
-            <td className="text-center"><PlayButton /></td>
+            <td className="text-center"><PlayButton game={props.game} /></td>
             <td className="text-center"><OwnedButton game={props.game} /></td>
         </tr>
     )

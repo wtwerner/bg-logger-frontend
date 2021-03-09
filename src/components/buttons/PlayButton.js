@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
-import { createPlay, removePlay } from '../../actions/forms'
+import { removePlay, setPlayGame } from '../../actions/forms'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
@@ -10,9 +10,11 @@ const PlaysButton = (props) => {
 
     const handlePlayClick = event => {
         if (event.target.parentElement.parentElement.getAttribute('play_id')) {
-            console.log(props.play)
             props.removePlay(props.play)
         } else {
+            if (props.game) {
+                props.setPlayGame(props.game.id)
+            }
             history.push('/plays/new')
         }
     }
@@ -31,4 +33,4 @@ const mapStateToProps = ({ games }) => {
     }
 }
 
-export default connect(mapStateToProps, { createPlay, removePlay })(PlaysButton)
+export default connect(mapStateToProps, { removePlay, setPlayGame })(PlaysButton)

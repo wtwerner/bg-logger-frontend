@@ -46,6 +46,27 @@ const forms = (state = initialState, action) => {
             ...state,
             play: action.formData
         }
+        case 'SET_PLAY_FORM_GAME':
+        return {
+            ...state,
+            play: {
+                ...state.play,
+                game: action.game
+            }
+            
+        }
+        case 'RESET_PLAY_FORM':
+            return {
+                ...state,
+                play: {
+                    game: null,
+                    date: null,
+                    players: null,
+                    duration: null,
+                    winner: null,
+                    notes: ''
+                }
+            }
         case "UPDATE_SIGNUP_FORM":
             return {
                 ...state,

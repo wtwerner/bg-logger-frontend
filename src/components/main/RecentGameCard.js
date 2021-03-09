@@ -15,7 +15,7 @@ const RecentGameCard = (props) => {
             </Card.Body>
             <Card.Footer>
                 <div className="text-center">
-                    <PlayButton className="mx-auto" />
+                    <PlayButton game={props.game} />
                 </div>
             </Card.Footer>
         </Card>
