@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateLoginForm, resetLoginForm } from "../../actions/loginForm.js"
+import { updateLoginForm, resetLoginForm } from "../../actions/forms.js"
 import { login } from "../../actions/currentUser.js"
 import { Form, Button } from 'react-bootstrap'
 import { useHistory} from 'react-router-dom'
@@ -38,7 +38,7 @@ const Login = ({ loginFormData, updateLoginForm, resetLoginForm, login }) => {
 
 const mapStateToProps = state => {
     return {
-        loginFormData: state.loginForm
+        loginFormData: state.forms.login
     }
 }
 

@@ -1,5 +1,5 @@
 import { fetchGamesFromQuery, fetchGamesFromUser } from './games'
-import { fetchPlaysFromUser } from './playForm'
+import { fetchPlaysFromUser } from './forms'
 import { resetGames } from './games'
 
 // Synchronous Action Creators

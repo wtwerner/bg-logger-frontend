@@ -1,3 +1,35 @@
+//Discover form
+
+export const updateDiscoverForm = (formData) => {
+    return {
+        type: "UPDATE_DISCOVER_FORM",
+        formData
+    }
+}
+  
+export const resetDiscoverForm = () => {
+    return {
+        type: "RESET_DISCOVER_FORM"
+    }
+}
+
+//Login form
+
+export const updateLoginForm = (formData) => {
+    return {
+        type: "UPDATE_LOGIN_FORM",
+        formData
+    }
+}
+  
+export const resetLoginForm = () => {
+    return {
+        type: "RESET_LOGIN_FORM"
+    }
+}
+
+//Play form
+
 export const updatePlayForm = (formData) => {
     return {
         type: "UPDATE_PLAY_FORM",
@@ -92,5 +124,20 @@ export const removePlay = (play) => {
 export const fetchPlaysFromUser = (user) => {
     return dispatch => {
         dispatch(addPlays(user.data.attributes.plays))
+    }
+}
+
+//Signup form
+
+export const updateSignupForm = formData => {
+    return {
+      type: "UPDATE_SIGNUP_FORM",
+      formData
+    }
+}
+  
+export const resetSignupForm = () => {
+    return {
+      type: "RESET_SIGNUP_FORM"
     }
 }

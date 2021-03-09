@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateDiscoverForm } from "../../actions/discoverForm.js"
+import { updateDiscoverForm } from "../../actions/forms.js"
 import { fetchGamesFromQuery } from "../../actions/games.js"
 import { Form, Button, InputGroup } from 'react-bootstrap'
 
@@ -30,7 +30,7 @@ const DiscoverForm = ({ discoverFormData, updateDiscoverForm, fetchGamesFromQuer
 
 const mapStateToProps = state => {
     return {
-        discoverFormData: state.discoverForm
+        discoverFormData: state.forms.discover
     }
 }
 

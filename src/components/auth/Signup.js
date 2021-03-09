@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateSignupForm, resetSignupForm } from "../../actions/signupForm"
+import { updateSignupForm, resetSignupForm } from "../../actions/forms"
 import { signup } from "../../actions/currentUser.js"
 import { Form, Button } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
@@ -38,7 +38,7 @@ const Signup = ({ signupFormData, updateSignupForm, resetSignupForm, signup }) =
 
 const mapStateToProps = state => {
   return {
-    signupFormData: state.signupForm
+    signupFormData: state.forms.signup
   }
 }
 

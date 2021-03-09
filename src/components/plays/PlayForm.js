@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updatePlayForm, createPlay } from "../../actions/playForm.js"
+import { updatePlayForm, createPlay } from "../../actions/forms.js"
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 
@@ -77,7 +77,7 @@ const PlayForm = ({ formData, updatePlayForm, createPlay, games }) => {
 
 const mapStateToProps = state => {
     return {
-        formData: state.playForm,
+        formData: state.forms.play,
         games: state.games.owned
     }
 }

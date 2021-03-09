@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
-import { createPlay, removePlay } from '../../actions/playForm'
+import { createPlay, removePlay } from '../../actions/forms'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
