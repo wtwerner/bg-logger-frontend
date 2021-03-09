@@ -18,6 +18,13 @@ export const addOwnedGames = games => {
     }
 }
 
+export const addRecentGames = games => {
+    return {
+      type: "ADD_RECENT_GAMES",
+      games
+    }
+}
+
 export const addToWishlist = game => {
     return{
         type: 'ADD_TO_WISHLIST',
@@ -79,6 +86,8 @@ export const fetchGamesFromUser = (user) => {
     return dispatch => {
         let ownedIdsString = ''
         let wishlistIdsString = ''
+        let recentIdsString = ''
+
         user.data.attributes.games.forEach(game => {
             if (game.owned) {
                 ownedIdsString += `${game.bga_id},`
@@ -86,6 +95,12 @@ export const fetchGamesFromUser = (user) => {
                 wishlistIdsString += `${game.bga_id},`
             }
         })
+
+        const recents = user.data.attributes.games.slice(-3)
+        recents.forEach(game => {
+            recentIdsString += `${game.bga_id},`
+        })
+
         if (ownedIdsString !== '') {
             fetch(API_URL+'search?ids='+ownedIdsString+CLIENT_ID)
             .then(response => response.json())
@@ -99,6 +114,14 @@ export const fetchGamesFromUser = (user) => {
             .then(response => response.json())
             .then(data => {
                 dispatch(addWishlistGames(data))
+            })
+            .catch(err => console.log(err));
+        }
+        if (recentIdsString !== '') {
+            fetch(API_URL+'search?ids='+recentIdsString+CLIENT_ID)
+            .then(response => response.json())
+            .then(data => {
+                dispatch(addRecentGames(data))
             })
             .catch(err => console.log(err));
         }
