@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, InputGroup } from 'react-bootstrap'
 import { createFriend, updateFriendForm, resetFriendForm } from '../../actions/forms'
 
 const FriendForm = (props) => {
@@ -21,10 +21,12 @@ const FriendForm = (props) => {
     }
 
     return(
-        <div style={{width: "300px"}}>
-            <Form onSubmit={handleOnSubmit}>
-                <Form.Control value={props.friendFormData.name} placeholder="name" name="name" type="text" onChange={handleOnChange} />
-                <Button style={{width: "300px"}} value="Add Friend" type="submit">Add Friend</Button>
+        <div style={{width: "300px", margin: "30px"}}>
+            <Form inline onSubmit={handleOnSubmit}>
+                <InputGroup>
+                    <Form.Control value={props.friendFormData.name} placeholder="name" name="name" type="text" onChange={handleOnChange} />
+                    <Button value="Add Friend" type="submit">Add Friend</Button>
+                </InputGroup>
             </Form>
         </div>
     )

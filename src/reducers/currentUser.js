@@ -15,6 +15,17 @@ const currentUser = (state = null, action) => {
                     }
                 }
             }
+        case 'DELETE_FRIEND':
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    attributes: {
+                        ...state.data.attributes,
+                        friends: state.data.attributes.friends.filter(friend => friend.id !== action.friend.id)
+                    }
+                }
+            }
         default:
             return state
     }

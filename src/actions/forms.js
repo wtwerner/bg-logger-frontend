@@ -171,6 +171,13 @@ export const addFriend = friend => {
     }
 }
 
+export const deleteFriend = friend => {
+    return {
+      type: "DELETE_FRIEND",
+      friend
+    }
+}
+
 export const createFriend = (friend) => {
     return dispatch => {
         console.log("Creating friend with name " + friend.name)
@@ -191,6 +198,32 @@ export const createFriend = (friend) => {
                 alert(resp.error)
             } else {
                 dispatch(addFriend(resp))
+            }
+            })
+            .catch(console.log)
+    }
+}
+
+export const removeFriend = (friend) => {
+    return dispatch => {
+        console.log("Removing friend with name " + friend.name)
+        const sendableGameData = {
+            id: friend.id
+        }
+        return fetch(`http://localhost:3001/api/v1/friends/${friend.id}`, {
+            credentials: "include",
+            method: "DELETE",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(sendableGameData)
+        })
+            .then(r => r.json())
+            .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                dispatch(deleteFriend(resp))
             }
             })
             .catch(console.log)
