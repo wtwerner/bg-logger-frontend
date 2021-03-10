@@ -9,6 +9,7 @@ import LoginContainer from './components/auth/LoginContainer'
 import PlayFormContainer from './components/plays/PlayFormContainer'
 import GlobalNavbar from './components/navbar/Navbar'
 import SignupContainer from './components/auth/SignupContainer'
+import FriendsContainer from './components/friends/FriendsContainer'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/currentUser'
 import Container from 'react-bootstrap/Container'
@@ -32,6 +33,7 @@ class App extends React.Component {
             <Route path="/plays" exact component={PlaysContainer} />
             <Route path="/login" exact component={LoginContainer} />
             <Route path="/plays/new" exact component={PlayFormContainer} />
+            <Route path="/friends" exact component={FriendsContainer} />
         </Container>
       </div>
     );

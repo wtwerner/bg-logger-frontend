@@ -39,6 +39,7 @@ const GlobalNavbar = ({ logout, currentUser }) => {
                         <NavDropdown.Item as={Link} to="/owned">Owned</NavDropdown.Item>
                         <NavDropdown.Item as={Link} to="/wishlist">Wishlist</NavDropdown.Item>
                     </NavDropdown>
+                    <Nav.Link as={Link} to="/friends">Friends</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
             <Form inline className="mx-3">
