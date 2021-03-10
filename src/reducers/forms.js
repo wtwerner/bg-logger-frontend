@@ -55,8 +55,7 @@ const forms = (state = initialState, action) => {
             play: {
                 ...state.play,
                 game: action.game
-            }
-            
+            } 
         }
         case 'RESET_PLAY_FORM':
             return {
