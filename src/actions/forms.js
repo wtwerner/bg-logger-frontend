@@ -148,3 +148,51 @@ export const resetSignupForm = () => {
       type: "RESET_SIGNUP_FORM"
     }
 }
+
+//Friend form
+
+export const updateFriendForm = formData => {
+    return {
+      type: "UPDATE_FRIEND_FORM",
+      formData
+    }
+}
+  
+export const resetFriendForm = () => {
+    return {
+      type: "RESET_FRIEND_FORM"
+    }
+}
+
+export const addFriend = friend => {
+    return {
+      type: "ADD_FRIEND",
+      friend
+    }
+}
+
+export const createFriend = (friend) => {
+    return dispatch => {
+        console.log("Creating friend with name " + friend.name)
+        const sendablePlayData = {
+            name: friend.name
+        }
+        return fetch("http://localhost:3001/api/v1/friends", {
+            credentials: "include",
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(sendablePlayData)
+        })
+            .then(r => r.json())
+            .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                dispatch(addFriend(resp))
+            }
+            })
+            .catch(console.log)
+    }
+}

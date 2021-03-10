@@ -18,6 +18,9 @@ const initialState = {
         name: '',
         email: '',
         password: '',
+    },
+    friend: {
+        name: ''
     }
 }
 
@@ -79,6 +82,18 @@ const forms = (state = initialState, action) => {
                     name: '',
                     email: '',
                     password: '',
+                }
+            }
+        case "UPDATE_FRIEND_FORM":
+            return {
+                ...state,
+                friend: action.formData
+            }
+        case "RESET_FRIEND_FORM":
+            return {
+                ...state,
+                friend: {
+                    name: ''
                 }
             }
         default:
