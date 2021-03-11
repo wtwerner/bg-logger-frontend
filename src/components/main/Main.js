@@ -19,7 +19,11 @@ const Main = ({recentGames, popularGames, currentUser}) => {
                 </Jumbotron>            
             </Container>
             <Container>
-                {(recentGames.length > 2) ? <RecentGames games={recentGames} /> : <RecentGames games={popularGames} />}
+                {currentUser 
+                    ? (recentGames.length > 2) ? <RecentGames games={recentGames} recent={true} /> : <RecentGames games={popularGames} recent={false} />
+                    : null
+                }
+                
             </Container>
         </>
     )
