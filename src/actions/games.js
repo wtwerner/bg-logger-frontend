@@ -96,7 +96,7 @@ export const fetchGamesFromUser = (user) => {
             }
         })
 
-        const recents = user.data.attributes.games.slice(-3)
+        const recents = user.data.attributes.games.filter(game => game.owned === true).slice(-3)
         recents.forEach(game => {
             recentIdsString += `${game.bga_id},`
         })
