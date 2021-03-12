@@ -8,7 +8,7 @@ import '../../photo_style.css'
 const DiscoverTableRow = (props) => {
     return (
         <tr key={props.game.id} game_id={props.game.id} className="align-middle" >
-            <td className="text-center"><img src={props.game.images.small} className="photo" alt="props.game" /></td>
+            <td className="text-center"><img src={props.game.images.small} className="photo" alt={props.game.name} /></td>
             <td className="text-center">{props.game.name}</td>
             <td className="text-center">{props.game.rank < 1000 ? props.game.rank : 'N/A'}</td>
             <td className="text-center">{props.game.min_players}-{props.game.max_players}</td>
