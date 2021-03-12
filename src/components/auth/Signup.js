@@ -21,9 +21,8 @@ const Signup = ({ signupFormData, updateSignupForm, resetSignupForm, signup }) =
 
   const handleOnSubmit = event => {
     event.preventDefault()
-    signup(signupFormData)
     resetSignupForm()
-    history.push('/')
+    history.push('/login')
   }
 
   return (
