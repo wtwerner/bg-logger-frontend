@@ -60,7 +60,7 @@ export default class GameModal extends React.Component {
                     </Container>
                 </Modal.Body>
                 <Modal.Footer>
-                    <PlayButton />
+                    <PlayButton game={this.props.game} />
                     <OwnedButton game={this.props.game} />
                 </Modal.Footer>
             </Modal>
