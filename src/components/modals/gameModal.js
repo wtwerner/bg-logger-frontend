@@ -2,8 +2,6 @@ import React from 'react'
 import { Modal, Container, Row, Col } from 'react-bootstrap'
 import './modal.css'
 import '../../photo_style.css'
-import PlayButton from '../buttons/PlayButton'
-import OwnedButton from '../buttons/OwnedButton'
 
 export default class GameModal extends React.Component {
 
@@ -59,10 +57,6 @@ export default class GameModal extends React.Component {
                         </Row>
                     </Container>
                 </Modal.Body>
-                <Modal.Footer>
-                    <PlayButton game={this.props.game} />
-                    <OwnedButton game={this.props.game} />
-                </Modal.Footer>
             </Modal>
         )
     }
