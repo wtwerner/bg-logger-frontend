@@ -23,8 +23,8 @@ const PlaysButton = (props) => {
 
     return (
         props.play
-        ? <Button variant="secondary" onClick={handlePlayClick}>Remove</Button>
-        : <Button variant="primary" onClick={handlePlayClick}>Add Play</Button>
+        ? <Button size="sm" variant="secondary" onClick={handlePlayClick}>Remove</Button>
+        : <Button size="sm" variant="primary" onClick={handlePlayClick}>Add Play</Button>
     )
 
 }

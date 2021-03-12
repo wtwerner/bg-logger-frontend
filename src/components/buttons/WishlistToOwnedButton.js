@@ -10,7 +10,7 @@ const WishlistToOwnedButton = (props) => {
     }
 
     return (
-        <Button variant="primary" onClick={handleOwnedClick}>Move to Owned</Button>
+        <Button size="sm" variant="primary" onClick={handleOwnedClick}>Move to Owned</Button>
     )
 
 }

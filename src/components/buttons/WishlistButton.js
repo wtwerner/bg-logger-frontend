@@ -30,8 +30,8 @@ const WishlistButton = (props) => {
 
     return (
         findItem(props.games.wishlist, props.game.id)
-        ? <Button wishlisted="true" variant="secondary" onClick={handleWishlistClick}>Remove</Button>
-        : <Button wishlisted="false" variant="primary" onClick={handleWishlistClick}>Add to Wishlist</Button>
+        ? <Button wishlisted="true" size="sm" variant="secondary" onClick={handleWishlistClick}>Remove from Wishlist</Button>
+        : <Button wishlisted="false" size="sm" variant="primary" onClick={handleWishlistClick}>Add to Wishlist</Button>
     )
 
 }

@@ -30,8 +30,8 @@ const OwnedButton = (props) => {
 
     return (
         findItem(props.games.owned, props.game.id)
-            ? <Button owned="true" variant="secondary" onClick={handleOwnedClick}>Remove</Button>
-            : <Button owned="false" variant="primary" onClick={handleOwnedClick}>Add to Owned</Button>
+            ? <Button size="sm" owned="true" variant="secondary" onClick={handleOwnedClick}>Remove from Owned</Button>
+            : <Button size="sm" owned="false" variant="primary" onClick={handleOwnedClick}>Add to Owned</Button>
     )
 
 }
