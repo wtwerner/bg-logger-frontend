@@ -26,10 +26,15 @@ export default class PlayModal extends React.Component {
                                 <br/>
                                 {this.props.play.date.substring(0,10)}
                             </Col>
-                            <Col xs={6} md={4}>
+                            <Col xs={4} md={2}>
                                 Players: 
                                 <br/>
                                 {this.props.play.players}
+                            </Col>
+                            <Col xs={4} md={2}>
+                                Winner: 
+                                <br/>
+                                {this.props.play.winner}
                             </Col>
                             <Col>
                                 Notes:
