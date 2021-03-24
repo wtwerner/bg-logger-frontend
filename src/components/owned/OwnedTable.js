@@ -1,14 +1,35 @@
 import React from 'react'
-import { Table } from 'react-bootstrap'
+import { Table, Button } from 'react-bootstrap'
 import OwnedTableRow from './OwnedTableRow'
 import GameModal from '../modals/gameModal'
 
 class OwnedTable extends React.Component {
     state = {
         isOpen: false,
-        modalGame: null
-    }
+        modalGame: null,
+        games: this.props.userGames,
+        sorted: false
+    } 
     
+    sortGames = () => {
+        const unsorted = [...this.props.userGames]
+        if (this.state.sorted === false) {
+            console.log("Sorting")
+            const sortedGames = unsorted.sort((a, b) => a.rank - b.rank)
+            this.setState({
+                    games: sortedGames,
+                    sorted: true
+            })
+        } else {
+            console.log("Unsorting")
+            this.setState({
+                games: unsorted,
+                sorted: false
+            })
+        }
+
+    }
+
     openModal = (game) => {
         this.setState({ 
             isOpen: true,
@@ -20,6 +41,7 @@ class OwnedTable extends React.Component {
     render() {
         return (
             <>
+                <Button onClick={() => this.sortGames()}>{this.state.sorted ? 'Unsort' : 'Sort'}</Button>
                 <Table striped hover className="pt-10">
                     <thead>
                         <tr className="text-center">
@@ -33,7 +55,7 @@ class OwnedTable extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.userGames.map(game => {
+                        {this.state.games.map(game => {
                             return <OwnedTableRow openModal={this.openModal} game={game} key={game.id} />
                         })}
                     </tbody>
