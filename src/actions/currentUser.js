@@ -1,6 +1,7 @@
 import { fetchGamesFromQuery, fetchGamesFromUser } from './games'
 import { fetchPlaysFromUser } from './forms'
 import { resetGames } from './games'
+import { API_ROOT } from '../apiRoot'
 
 // Synchronous Action Creators
 
@@ -21,7 +22,7 @@ export const clearCurrentUser = () => {
 
 export const login = (credentials) => {
     return dispatch => {
-        return fetch("http://localhost:3001/api/v1/login", {
+        return fetch(`${API_ROOT}/api/v1/login`, {
             credentials: 'include',
             method: "POST",
             headers: {
@@ -46,7 +47,7 @@ export const login = (credentials) => {
 
 export const logout = () => {
   return dispatch => {
-    return fetch('http://localhost:3001/api/v1/logout', {
+    return fetch(`${API_ROOT}/api/v1/logout`, {
       credentials: 'include',
       method: 'DELETE'
     })
@@ -60,7 +61,7 @@ export const signup = (credentials) => {
     const userInfo = {
       user: credentials
     }
-    return fetch("http://localhost:3001/api/v1/signup", {
+    return fetch(`${API_ROOT}/api/v1/signup`, {
       credentials: "include",
       method: "POST",
       headers: {
@@ -85,7 +86,7 @@ export const signup = (credentials) => {
 
 export const getCurrentUser = () => {
   return dispatch => {
-    return fetch("http://localhost:3001/api/v1/get_current_user", {
+    return fetch(`${API_ROOT}/api/v1/get_current_user`, {
       credentials: 'include',
       method: "GET",
       headers: {

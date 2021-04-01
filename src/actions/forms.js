@@ -1,3 +1,5 @@
+import { API_ROOT } from '../apiRoot'
+
 //Discover form
 
 export const updateDiscoverForm = (formData) => {
@@ -82,7 +84,7 @@ export const createPlay = (play) => {
             winner: play.winner,
             notes: play.notes
         }
-        return fetch("http://localhost:3001/api/v1/plays", {
+        return fetch(`${API_ROOT}/api/v1/plays`, {
             credentials: "include",
             method: "POST",
             headers: {
@@ -108,7 +110,7 @@ export const removePlay = (play) => {
         const sendableGameData = {
             id: play.id
         }
-        return fetch(`http://localhost:3001/api/v1/plays/${play.id}`, {
+        return fetch(`${API_ROOT}/api/v1/plays/${play.id}`, {
             credentials: "include",
             method: "DELETE",
             headers: {
@@ -184,7 +186,7 @@ export const createFriend = (friend) => {
         const sendablePlayData = {
             name: friend.name
         }
-        return fetch("http://localhost:3001/api/v1/friends", {
+        return fetch(`${API_ROOT}/api/v1/friends`, {
             credentials: "include",
             method: "POST",
             headers: {
@@ -210,7 +212,7 @@ export const removeFriend = (friend) => {
         const sendableGameData = {
             id: friend.id
         }
-        return fetch(`http://localhost:3001/api/v1/friends/${friend.id}`, {
+        return fetch(`${API_ROOT}/api/v1/friends/${friend.id}`, {
             credentials: "include",
             method: "DELETE",
             headers: {

@@ -1,3 +1,4 @@
+import { API_ROOT } from '../apiRoot'
 const API_URL = 'https://api.boardgameatlas.com/api/'
 const CLIENT_ID = '&client_id=0hcbB6EyEf'
 
@@ -139,7 +140,7 @@ export const createWishlistGame = (game) => {
             wishlist: true,
             owned: false
         }
-        return fetch("http://localhost:3001/api/v1/games", {
+        return fetch(`${API_ROOT}/api/v1/games`, {
             credentials: "include",
             method: "POST",
             headers: {
@@ -167,7 +168,7 @@ export const createOwnedGame = (game) => {
             wishlist: false,
             owned: true
         }
-        return fetch("http://localhost:3001/api/v1/games", {
+        return fetch(`${API_ROOT}/api/v1/games`, {
             credentials: "include",
             method: "POST",
             headers: {
@@ -196,7 +197,7 @@ export const removeWishlistGame = (game) => {
         const sendableGameData = {
             bga_id: game.id
         }
-        return fetch(`http://localhost:3001/api/v1/games/${game.id}`, {
+        return fetch(`${API_ROOT}/api/v1/games/${game.id}`, {
             credentials: "include",
             method: "DELETE",
             headers: {
@@ -222,7 +223,7 @@ export const removeOwnedGame = (game) => {
         const sendableGameData = {
             bga_id: game.id
         }
-        return fetch(`http://localhost:3001/api/v1/games/${game.id}`, {
+        return fetch(`${API_ROOT}/api/v1/games/${game.id}`, {
             credentials: "include",
             method: "DELETE",
             headers: {
@@ -249,7 +250,7 @@ export const moveToOwned = (game) => {
             owned: true,
             wishlist: false
         }
-        return fetch(`http://localhost:3001/api/v1/games/${game.id}`, {
+        return fetch(`${API_ROOT}/api/v1/games/${game.id}`, {
             credentials: "include",
             method: "PATCH",
             headers: {
