@@ -1,18 +1,18 @@
 const initialState = {
     discover: {
-        query: ''
-    }, 
+        query: '',
+    },
     login: {
         email: '',
-        password: ''
-    }, 
+        password: '',
+    },
     play: {
         game: null,
         date: null,
         players: null,
         duration: null,
         winner: null,
-        notes: ''
+        notes: '',
     },
     signup: {
         name: '',
@@ -20,43 +20,43 @@ const initialState = {
         password: '',
     },
     friend: {
-        name: ''
-    }
-}
+        email: '',
+    },
+};
 
 const forms = (state = initialState, action) => {
     switch (action.type) {
         case 'UPDATE_DISCOVER_FORM':
             return {
                 ...state,
-                discover: action.formData
-            }
+                discover: action.formData,
+            };
         case 'UPDATE_LOGIN_FORM':
             return {
                 ...state,
-                login: action.formData
-            }
+                login: action.formData,
+            };
         case 'RESET_LOGIN_FORM':
             return {
                 ...state,
                 login: {
                     email: '',
-                    password: ''
-                }
-            }
+                    password: '',
+                },
+            };
         case 'UPDATE_PLAY_FORM':
-        return {
-            ...state,
-            play: action.formData
-        }
+            return {
+                ...state,
+                play: action.formData,
+            };
         case 'SET_PLAY_FORM_GAME':
-        return {
-            ...state,
-            play: {
-                ...state.play,
-                game: action.game
-            } 
-        }
+            return {
+                ...state,
+                play: {
+                    ...state.play,
+                    game: action.game,
+                },
+            };
         case 'RESET_PLAY_FORM':
             return {
                 ...state,
@@ -66,38 +66,38 @@ const forms = (state = initialState, action) => {
                     players: null,
                     duration: null,
                     winner: null,
-                    notes: ''
-                }
-            }
-        case "UPDATE_SIGNUP_FORM":
+                    notes: '',
+                },
+            };
+        case 'UPDATE_SIGNUP_FORM':
             return {
                 ...state,
-                signup: action.formData
-            }
-        case "RESET_SIGNUP_FORM":
+                signup: action.formData,
+            };
+        case 'RESET_SIGNUP_FORM':
             return {
                 ...state,
                 signup: {
                     name: '',
                     email: '',
                     password: '',
-                }
-            }
-        case "UPDATE_FRIEND_FORM":
+                },
+            };
+        case 'UPDATE_FRIEND_FORM':
             return {
                 ...state,
-                friend: action.formData
-            }
-        case "RESET_FRIEND_FORM":
+                friend: action.formData,
+            };
+        case 'RESET_FRIEND_FORM':
             return {
                 ...state,
                 friend: {
-                    name: ''
-                }
-            }
+                    email: '',
+                },
+            };
         default:
-            return state
+            return state;
     }
-}
+};
 
-export default forms
+export default forms;
