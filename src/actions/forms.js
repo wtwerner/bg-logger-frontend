@@ -180,6 +180,13 @@ export const deleteFriend = (friend) => {
     };
 };
 
+export const addSearchedFriend = (friend) => {
+    return {
+        type: 'ADD_SEARCHED_FRIEND',
+        friend,
+    };
+};
+
 export const searchForFriend = (friend) => {
     return (dispatch) => {
         console.log('Searching for friend with email ' + friend.email);
@@ -196,7 +203,7 @@ export const searchForFriend = (friend) => {
                     alert(resp.error);
                 } else {
                     console.log(resp);
-                    // dispatch(addFriend(resp))
+                    dispatch(addSearchedFriend(resp.data));
                 }
             })
             .catch(console.log);
