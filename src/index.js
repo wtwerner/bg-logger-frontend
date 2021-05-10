@@ -15,6 +15,8 @@ ReactDOM.render(
         domain="bg-logger.us.auth0.com"
         clientId="1Lj17i9tfiW5zDV9krgDVbzXWpFLkquJ"
         redirectUri={window.location.origin}
+        audience="http://localhost:3001/"
+        scope="read:current_user update:current_user_metadata"
     >
         <Provider store={store}>
             <Router history={history}>
