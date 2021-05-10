@@ -1,19 +1,21 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown, Form, ButtonGroup } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Form, Button } from 'react-bootstrap';
 import { logout } from '../../actions/currentUser';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LogoutButton from '../buttons/LogoutButton';
 import LoginButton from '../buttons/LoginButton';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const GlobalNavbar = () => {
+    const { isLoading, isAuthenticated } = useAuth0();
+
     const authButton = () => {
-        return (
-            <ButtonGroup>
-                <LoginButton />
-                <LogoutButton />
-            </ButtonGroup>
-        );
+        if (isLoading) {
+            return <Button>Loading...</Button>;
+        }
+
+        return isAuthenticated ? <LogoutButton /> : <LoginButton />;
     };
 
     return (
