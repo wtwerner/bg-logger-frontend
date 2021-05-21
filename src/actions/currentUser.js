@@ -33,7 +33,7 @@ export const login = (credentials) => {
             .then((response) => response.json())
             .then((response) => {
                 if (response.error) {
-                    alert(response.error);
+                    return new Error(response.error);
                 } else {
                     dispatch(setCurrentUser(response));
                     dispatch(fetchGamesFromUser(response));

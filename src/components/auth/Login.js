@@ -17,9 +17,15 @@ const Login = ({ loginFormData, updateLoginForm, resetLoginForm, login }) => {
         updateLoginForm(updatedFormInfo);
     };
 
-    const handleOnSubmit = (event) => {
+    const handleOnSubmit = async (event) => {
         event.preventDefault();
-        login(loginFormData);
+        const resp = await login(loginFormData);
+
+        if (resp instanceof Error) {
+            resetLoginForm();
+            return alert(resp);
+        }
+
         resetLoginForm();
         history.push('/');
     };
