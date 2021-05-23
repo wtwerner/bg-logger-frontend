@@ -6,15 +6,15 @@ import '../../photo_style.css';
 export default class GameModal extends React.Component {
     starRating = (rating) => {
         if (0 < rating && rating < 1.5) {
-            return <span>⭐</span>;
+            return <span>★☆☆☆☆</span>;
         } else if (1.5 < rating && rating < 2.5) {
-            return <span>⭐⭐</span>;
+            return <span>★★☆☆☆</span>;
         } else if (2.5 < rating && rating < 3.5) {
-            return <span>⭐⭐⭐</span>;
+            return <span>★★★☆☆</span>;
         } else if (3.5 < rating && rating < 4.5) {
-            return <span>⭐⭐⭐⭐</span>;
+            return <span>★★★★☆</span>;
         } else if (4.5 < rating && rating < 5) {
-            return <span>⭐⭐⭐⭐⭐</span>;
+            return <span>★★★★★</span>;
         }
     };
 
